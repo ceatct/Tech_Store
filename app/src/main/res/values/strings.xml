@@ -1,3 +1,52 @@
 <resources>
     <string name="app_name">Tech Store</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="sales">On sale</string>
+    <string name="newest">New items</string>
+    <string name="categories">Categories</string>
+    <string name="favorites">Favorites</string>
+    <string name="cart">Cart</string>
+
+    <string name="alerts">Alerts</string>
+    <string name="view_history">History views</string>
+    <string name="order_history">History orders</string>
+    <string name="wallet">Wallet</string>
+    <string name="support">Support</string>
+    <string name="phone">0985899858</string>
+    <string name="mail">support@tech.store</string>
+    <string name="inst">tech.store</string>
+    <string name="site">techstore.com</string>
+    <string name="about">About app</string>
+
+    <string name="back">Back</string>
+    <string name="add">Add to cart</string>
+
+    <string name="order">Order</string>
+    <string name="total">Total</string>
+    <string name="contact">Contact info</string>
+    <string name="delivery">Delivery</string>
+    <string name="address">Address</string>
+    <string name="payment_method">Payment method</string>
+
+    <string name="confirm">Confirm</string>
+
+    <string name="price">$ 9.99</string>
+    <string name="color">Color: Deep Purple</string>
+
+    <string name="name">Name</string>
+    <string name="lastname">Lastname</string>
+    <string name="email">Email</string>
+
+    <string name="post">Post</string>
+
+    <string name="City">City</string>
+
+    <string name="card">Card</string>
+    <string name="google_pay">Google Pay</string>
+    <string name="apple_pay">Apple Pay</string>
+
+    <string name="count">1</string>
+
 </resources>
