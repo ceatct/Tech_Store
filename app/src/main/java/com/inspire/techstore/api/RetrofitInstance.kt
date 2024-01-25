@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitInstance {
 
     companion object {
-        val BASE_URL = "https://fakestoreapi.com/products/"
+        private const val BASE_URL = "https://fakestoreapi.com/"
 
         fun getRetrofitInstance(): Retrofit {
             return Retrofit.Builder()
@@ -15,5 +15,4 @@ class RetrofitInstance {
                 .build()
         }
     }
-
 }
