@@ -1,13 +1,16 @@
 package com.inspire.techstore.adapters
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.inspire.techstore.R
 import com.inspire.techstore.api.data.CategoriesModel
+import com.inspire.techstore.fragments.ResultFragment
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
@@ -27,6 +30,37 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>()
 
         holder.text.text = productList?.get(position)
 
+        holder.itemView.setOnClickListener {
+
+            val category = productList?.get(position)
+            val fragment = ResultFragment()
+
+            fragment.arguments = Bundle().apply {
+                putString("category", category)
+            }
+
+            (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.fragments, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
+        holder.itemView.setOnLongClickListener {
+
+            val category = productList?.get(position)
+            val fragment = ResultFragment()
+
+            fragment.arguments = Bundle().apply {
+                putString("category", category)
+            }
+
+            (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.fragments, fragment)
+                .addToBackStack(null)
+                .commit()
+
+            return@setOnLongClickListener false
+        }
     }
 
     override fun getItemCount(): Int {
