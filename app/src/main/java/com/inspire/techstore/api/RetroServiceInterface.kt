@@ -16,7 +16,7 @@ interface RetroServiceInterface {
     @GET("products/category/{category}")
     fun getProductsListByCategory(@Path("category") category: String): Call<List<ProductModelItem>>
 
-    @GET("products/category/{id}")
-    fun getSingleProduct(@Path("id") category: String): Call<ProductModelItem>
+    @GET("products/{id}")
+    fun getSingleProduct(@Path("id") id: String): Call<ProductModelItem>
 
 }

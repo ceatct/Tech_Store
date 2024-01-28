@@ -45,7 +45,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>()
                 .commit()
         }
 
-        holder.itemView.setOnLongClickListener {
+        /*holder.itemView.setOnLongClickListener {
 
             val category = productList?.get(position)
             val fragment = ResultFragment()
@@ -60,7 +60,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>()
                 .commit()
 
             return@setOnLongClickListener false
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {

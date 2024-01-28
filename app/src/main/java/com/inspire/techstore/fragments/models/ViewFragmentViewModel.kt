@@ -9,28 +9,28 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ResultFragmentViewModel : ViewModel() {
+class ViewFragmentViewModel : ViewModel() {
 
-    var liveDataList: MutableLiveData<List<ProductModelItem>?> = MutableLiveData()
+    var liveDataList: MutableLiveData<ProductModelItem?> = MutableLiveData()
 
-    fun getLiveDataObserver(): MutableLiveData<List<ProductModelItem>?> {
+    fun getLiveDataObserver(): MutableLiveData<ProductModelItem?> {
         return liveDataList
     }
 
-    fun makeAPICall(category: String) {
-        val retroInstance =  RetrofitInstance. getRetrofitInstance()
+    fun makeAPICall(id: String) {
+        val retroInstance = RetrofitInstance.getRetrofitInstance()
         val retroService = retroInstance.create(RetroServiceInterface::class.java)
-        val call = retroService.getProductsListByCategory(category)
+        val call = retroService.getSingleProduct(id)
 
-        call.enqueue(object : Callback<List<ProductModelItem>> {
+        call.enqueue(object : Callback<ProductModelItem> {
 
-            override fun onFailure(call: Call<List<ProductModelItem>>, t: Throwable) {
+            override fun onFailure(call: Call<ProductModelItem>, t: Throwable) {
                 liveDataList.postValue(null)
             }
 
             override fun onResponse(
-                call: Call<List<ProductModelItem>>,
-                response: Response<List<ProductModelItem>>
+                call: Call<ProductModelItem>,
+                response: Response<ProductModelItem>
             ) {
                 liveDataList.postValue(response.body())
             }

@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -61,6 +62,7 @@
             app:ci_drawable_unselected="@drawable/non_active_dot_view"/>
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
@@ -71,6 +73,7 @@
             android:textSize="20sp"/>
 
         <TextView
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/price"
@@ -80,7 +83,7 @@
             android:fontFamily="@font/montserrat"
             android:textSize="20sp"/>
 
-        <View
+       <!-- <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="15dp"
@@ -125,7 +128,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:ignore="SpeakableTextPresentCheck"
             tools:itemCount="3"
-            tools:listitem="@layout/select_item_rectangle" />
+            tools:listitem="@layout/select_item_rectangle" />-->
 
         <View
             android:layout_width="match_parent"
@@ -142,7 +145,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/montserrat"/>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <!--<androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -151,7 +154,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:ignore="SpeakableTextPresentCheck"
             tools:itemCount="3"
-            tools:listitem="@layout/characteristic_item" />
+            tools:listitem="@layout/characteristic_item" />-->
 
         <View
             android:layout_width="match_parent"

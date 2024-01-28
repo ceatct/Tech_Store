@@ -1,15 +1,19 @@
 package com.inspire.techstore.adapters
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inspire.techstore.R
 import com.inspire.techstore.api.data.ProductModelItem
+import com.inspire.techstore.fragments.ResultFragment
+import com.inspire.techstore.fragments.ViewFragment
 import com.makeramen.roundedimageview.RoundedImageView
 import kotlinx.coroutines.*
 
@@ -41,6 +45,22 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
         holder.name.text = product?.title
         holder.oldPrice.text = "$1.20"
         holder.price.text = "$" + product?.price.toString()
+
+        holder.itemView.setOnClickListener {
+
+            val id = productList?.get(position)?.id.toString()
+            val fragment = ViewFragment()
+
+            fragment.arguments = Bundle().apply {
+                putString("id", id)
+            }
+
+            (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.fragments, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
     }
 
     override fun getItemCount(): Int {

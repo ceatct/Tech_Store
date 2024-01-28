@@ -3,16 +3,12 @@ package com.inspire.techstore.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inspire.techstore.R
-import com.inspire.techstore.models.ImageItem
 import com.makeramen.roundedimageview.RoundedImageView
 
-class ImageAdapter (private var images: List<ImageItem>) : RecyclerView.Adapter<ImageAdapter.Pager2ViewHolder>(){
+class ImageAdapter(private var images: ArrayList<String>) : RecyclerView.Adapter<ImageAdapter.Pager2ViewHolder>(){
 
     inner class Pager2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val itemImage: RoundedImageView = itemView.findViewById(R.id.imageView)
@@ -28,7 +24,7 @@ class ImageAdapter (private var images: List<ImageItem>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: Pager2ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(images[position].url)
+            .load(images[position])
             .placeholder(R.drawable.placeholder)
             .error(R.drawable.placeholder)
             .into(holder.itemImage)

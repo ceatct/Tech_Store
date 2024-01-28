@@ -1,13 +1,11 @@
 package com.inspire.techstore.fragments.models
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import com.inspire.techstore.R
 
 class ProfileFragmentViewModel : ViewModel() {
 
