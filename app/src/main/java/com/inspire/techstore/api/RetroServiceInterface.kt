@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface RetroServiceInterface {
-    @GET("products")
+    @GET("products?limit=5")
     fun getProductsList(): Call<List<ProductModelItem>>
 
     @GET("products/categories")
