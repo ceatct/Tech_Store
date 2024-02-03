@@ -2,8 +2,12 @@ package com.inspire.techstore.api
 
 import com.inspire.techstore.api.data.CategoriesModel
 import com.inspire.techstore.api.data.ProductModelItem
+import com.inspire.techstore.api.data.User
 import retrofit2.Call
+import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface RetroServiceInterface {
@@ -18,5 +22,8 @@ interface RetroServiceInterface {
 
     @GET("products/{id}")
     fun getSingleProduct(@Path("id") id: String): Call<ProductModelItem>
+
+    @POST("users")
+    suspend fun registerUser(@Body user: User): Response<User>
 
 }

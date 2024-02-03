@@ -38,6 +38,9 @@
     <string name="name">Name</string>
     <string name="lastname">Lastname</string>
     <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="phone_number">Phone number</string>
 
     <string name="post">Post</string>
 
@@ -48,5 +51,14 @@
     <string name="apple_pay">Apple Pay</string>
 
     <string name="count">1</string>
+
+    <string name="register">Registration</string>
+    <string name="login">Login</string>
+    <string name="login_u"><u>Login</u></string>
+    <string name="register_u"><u>Registration</u></string>
+
+    <string name="already">Already have an account?</string>
+    <string name="havent">Want to create an account?</string>
+    <string name="fill">Fill all!</string>
 
 </resources>
