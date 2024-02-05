@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inspire.techstore.R
 import com.inspire.techstore.api.data.ProductModelItem
-import com.inspire.techstore.fragments.ResultFragment
 import com.inspire.techstore.fragments.ViewFragment
 import com.makeramen.roundedimageview.RoundedImageView
 import kotlinx.coroutines.*

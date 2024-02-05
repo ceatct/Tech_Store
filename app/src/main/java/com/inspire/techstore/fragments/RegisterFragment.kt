@@ -27,25 +27,25 @@ class RegisterFragment : Fragment() {
 
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
-    private lateinit var registration: Button
-    private lateinit var login_bt: Button
+    private lateinit var registrationBt: Button
+    private lateinit var loginBt: Button
 
-    private lateinit var emailet:    TextInputEditText
+    private lateinit var emailet: TextInputEditText
     private lateinit var usernameet: TextInputEditText
     private lateinit var passwordet: TextInputEditText
-    private lateinit var nameet:     TextInputEditText
+    private lateinit var nameet: TextInputEditText
     private lateinit var lastnameet: TextInputEditText
-    private lateinit var phoneet:    TextInputEditText
+    private lateinit var phoneet: TextInputEditText
 
-    private lateinit var username_login:    TextInputEditText
-    private lateinit var password_login:    TextInputEditText
+    private lateinit var usernamelg: TextInputEditText
+    private lateinit var passwordlg: TextInputEditText
 
-    private lateinit var login:    TextView
+    private lateinit var login: TextView
 
-    private lateinit var registration_ll:    LinearLayout
-    private lateinit var already_ll:    LinearLayout
-    private lateinit var havent_ll:    LinearLayout
-    private lateinit var login_ll:    LinearLayout
+    private lateinit var registrationLayout: LinearLayout
+    private lateinit var alreadyLayout: LinearLayout
+    private lateinit var havenLayout: LinearLayout
+    private lateinit var loginLayout: LinearLayout
 
     private lateinit var back : LinearLayout
 
@@ -62,8 +62,8 @@ class RegisterFragment : Fragment() {
     ): View {
         val view: View = inflater.inflate(R.layout.fragment_register, container, false)
 
-        registration = view.findViewById(R.id.registration)
-        login_bt = view.findViewById(R.id.login_bt)
+        registrationBt = view.findViewById(R.id.registration)
+        loginBt = view.findViewById(R.id.login_bt)
 
         emailet = view.findViewById(R.id.email)
         usernameet = view.findViewById(R.id.username)
@@ -72,36 +72,38 @@ class RegisterFragment : Fragment() {
         lastnameet = view.findViewById(R.id.lastname)
         phoneet = view.findViewById(R.id.phone)
 
-        username_login = view.findViewById(R.id.username_login)
-        password_login = view.findViewById(R.id.password_login)
+        usernamelg = view.findViewById(R.id.username_login)
+        passwordlg = view.findViewById(R.id.password_login)
 
         login = view.findViewById(R.id.login)
-        registration_ll = view.findViewById(R.id.registration_ll)
-        already_ll = view.findViewById(R.id.already_ll)
-        havent_ll = view.findViewById(R.id.havent_ll)
-        login_ll = view.findViewById(R.id.login_ll)
+        registrationLayout = view.findViewById(R.id.registration_ll)
+        alreadyLayout = view.findViewById(R.id.already_ll)
+        havenLayout = view.findViewById(R.id.havent_ll)
+        loginLayout = view.findViewById(R.id.login_ll)
 
         back = view.findViewById(R.id.back)
 
         back.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
-            fragmentManager.popBackStackImmediate()
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragments, ProfileFragment())
+            fragmentTransaction.commit()
         }
 
         login.setOnClickListener {
-            registration_ll.visibility = GONE
-            already_ll.visibility = GONE
+            registrationLayout.visibility = GONE
+            alreadyLayout.visibility = GONE
 
-            havent_ll.visibility = VISIBLE
-            login_ll.visibility = VISIBLE
+            havenLayout.visibility = VISIBLE
+            loginLayout.visibility = VISIBLE
         }
 
-        havent_ll.setOnClickListener {
-            havent_ll.visibility = GONE
-            login_ll.visibility = GONE
+        havenLayout.setOnClickListener {
+            havenLayout.visibility = GONE
+            loginLayout.visibility = GONE
 
-            registration_ll.visibility = VISIBLE
-            already_ll.visibility = VISIBLE
+            registrationLayout.visibility = VISIBLE
+            alreadyLayout.visibility = VISIBLE
         }
 
         val allFieldsFilled = listOf(
@@ -113,9 +115,9 @@ class RegisterFragment : Fragment() {
             phoneet.text.toString()
         ).all { it.isNotEmpty() }
 
-        val allFieldsFilledLogin = listOf(username_login.text.toString(), password_login.text.toString()).all { it.isNotEmpty() }
+        val allFieldsFilledLogin = listOf(usernamelg.text.toString(), passwordlg.text.toString()).all { it.isNotEmpty() }
 
-        registration.setOnClickListener {
+        registrationBt.setOnClickListener {
             if (allFieldsFilled) {
                 coroutineScope.launch {
                     viewModel.register(emailet.text.toString(), usernameet.text.toString(), passwordet.text.toString(), nameet.text.toString(), lastnameet.text.toString(), phoneet.text.toString(), requireContext())
@@ -125,7 +127,7 @@ class RegisterFragment : Fragment() {
             }
         }
 
-        login_bt.setOnClickListener{
+        loginBt.setOnClickListener{
 
             if(allFieldsFilledLogin){
                 coroutineScope.launch {

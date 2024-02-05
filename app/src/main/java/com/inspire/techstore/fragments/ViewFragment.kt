@@ -73,49 +73,6 @@ class ViewFragment : Fragment() {
             fullView.visibility = GONE
         }
 
-        /*val currentView: View = viewpager.getChildAt(viewpager.getCurrentItem())
-        currentView.setOnClickListener {
-            fullView.visibility = VISIBLE
-            item.visibility = GONE
-        }*/
-
-        /*viewpager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-        })*/
-
-        /*viewpager.setOnClickListener{
-            fullView.visibility = VISIBLE
-            item.visibility = GONE
-        }*/
-
-        /*viewpager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                fullView.visibility = VISIBLE
-                item.visibility = GONE
-            }
-        })*/
-
-        /* val currentView: View = viewpager.getChildAt(0)
-        currentView.setOnClickListener {
-            fullView.visibility = VISIBLE
-            item.visibility = GONE
-        }*/
-
         back.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
             fragmentManager.popBackStackImmediate()

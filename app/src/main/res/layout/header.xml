@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SearchView
+    <com.google.android.material.search.SearchView
         android:id="@+id/search"
         style="@style/CustomSearchViewStyle"
         android:layout_width="match_parent"
@@ -31,22 +31,25 @@
         android:layout_marginEnd="55dp"
         android:searchHintIcon="@drawable/ic_search"
         android:searchIcon="@drawable/ic_search"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/menu"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:searchHintIcon="@drawable/ic_search"
+        app:searchIcon="@drawable/ic_search" />
 
     <ImageButton
         android:id="@+id/menu"
         android:layout_width="36dp"
         android:layout_height="36dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginEnd="15dp"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/ic_menu"
-        android:layout_marginEnd="15dp"
-        android:layout_marginVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

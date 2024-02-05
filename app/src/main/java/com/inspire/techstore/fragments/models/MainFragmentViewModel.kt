@@ -12,14 +12,14 @@ import retrofit2.Response
 
 class MainFragmentViewModel: ViewModel() {
 
-    var liveDataList: MutableLiveData<List<ProductModelItem>> = MutableLiveData()
-    var liveDataListCategories: MutableLiveData<CategoriesModel> = MutableLiveData()
+    var liveDataList: MutableLiveData<List<ProductModelItem>?> = MutableLiveData()
+    var liveDataListCategories: MutableLiveData<CategoriesModel?> = MutableLiveData()
 
-    fun getLiveDataObserver(): MutableLiveData<List<ProductModelItem>> {
+    fun getLiveDataObserver(): MutableLiveData<List<ProductModelItem>?> {
         return liveDataList
     }
 
-    fun getLiveDataObserverCategories(): MutableLiveData<CategoriesModel> {
+    fun getLiveDataObserverCategories(): MutableLiveData<CategoriesModel?> {
         return liveDataListCategories
     }
 

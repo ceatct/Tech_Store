@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
@@ -19,7 +20,8 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UselessParent">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/imageView"
@@ -50,7 +52,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="@string/price"
                     android:textColor="@color/grey"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    tools:ignore="TextContrastCheck" />
 
                 <TextView
                     android:id="@+id/price"
@@ -74,19 +77,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="right"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        tools:ignore="RtlHardcoded">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/action_bg"/>
+            android:src="@drawable/action_bg"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/action"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_love"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription" />
 
     </FrameLayout>
 

@@ -11,7 +11,9 @@ class CartFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
 
+        }
     }
 
     override fun onCreateView(
@@ -21,7 +23,4 @@ class CartFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 
-    companion object {
-
-    }
 }

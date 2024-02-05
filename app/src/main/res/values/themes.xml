@@ -1,15 +1,9 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
-        <!--<item name="bottomNavigationViewStyle">
-            <style>
-                <item name="selectedIconTint">@color/F7F7F7</item>
-            </style>
-        </item>-->
 
     </style>
-
 
     <style name="Theme.TechStore" parent="AppTheme" />
 

@@ -167,13 +167,14 @@
             android:id="@+id/registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/action_button"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="20dp"
-            android:text="@string/register"
-            android:textColor="@color/white"
+            android:background="@drawable/action_button"
             android:fontFamily="@font/montserrat"
+            android:text="@string/register"
             android:textAllCaps="false"
-            android:layout_marginHorizontal="15dp"/>
+            android:textColor="@color/white"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
     </LinearLayout>
 

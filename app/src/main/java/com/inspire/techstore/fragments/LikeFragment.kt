@@ -11,7 +11,9 @@ class LikeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
 
+        }
     }
 
     override fun onCreateView(
@@ -21,7 +23,4 @@ class LikeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_like, container, false)
     }
 
-    companion object {
-
-    }
 }

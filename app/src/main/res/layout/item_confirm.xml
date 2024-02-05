@@ -60,7 +60,7 @@
                     android:layout_gravity="center_vertical"
                     android:backgroundTint="#00FFFFFF"
                     android:src="@drawable/ic_plus"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <TextView
                     android:id="@+id/counter"
@@ -81,7 +81,7 @@
                     android:layout_gravity="center_vertical"
                     android:backgroundTint="#00FFFFFF"
                     android:src="@drawable/ic_minus"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </LinearLayout>
 
