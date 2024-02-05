@@ -18,7 +18,7 @@ import com.inspire.techstore.fragments.models.MainFragmentViewModel
 import me.relex.circleindicator.CircleIndicator3
 class MainFragment : Fragment() {
 
-    private val productAdapter = ProductAdapter()
+    private val productAdapter = ProductAdapter(ViewModelProvider(this))
     private val categoriesAdapter = CategoriesAdapter()
 
     private val viewModel by lazy {

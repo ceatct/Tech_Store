@@ -13,25 +13,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inspire.techstore.R
-import com.inspire.techstore.api.data.ProductModelItem
 import com.inspire.techstore.db.Like
 import com.inspire.techstore.db.LikeViewModel
 import com.inspire.techstore.fragments.ViewFragment
 import com.makeramen.roundedimageview.RoundedImageView
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class ProductAdapter(private var viewModelProvider: ViewModelProvider) : RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
+class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerView.Adapter<LikeAdapter.MyViewHolder>() {
 
     private lateinit var likeViewModel: LikeViewModel
-    private var productList: List<ProductModelItem>? = null
+    private var productList: List<Like>? = null
     private var recyclerView: RecyclerView? = null // Store RecyclerView reference
 
-    fun setProductList(productList: List<ProductModelItem>?) {
+    fun setProductList(productList: List<Like>?) {
         this.productList = productList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_like, parent, false)
         likeViewModel = viewModelProvider[LikeViewModel::class.java]
         return MyViewHolder(view)
     }
@@ -68,26 +70,17 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
         }
 
         holder.action.setOnClickListener{
-            insertDataToDatabase(position)
+            deleteItem(productList?.get(position)!!)
         }
 
     }
 
-    override fun getItemCount(): Int {
-        return if (productList == null) 0 else productList!!.size
+    private fun deleteItem(like: Like){
+        likeViewModel.deleteLike(like)
     }
 
-    private fun insertDataToDatabase(position: Int){
-        val category = productList?.get(position)?.category
-        val description = productList?.get(position)?.description
-        val id = productList?.get(position)?.id
-        val image = productList?.get(position)?.image
-        val price = productList?.get(position)?.price
-        val rating = productList?.get(position)?.rating
-        val title = productList?.get(position)?.title
-
-        val like = Like(category!!, description!!, id!!, image!!, price!!, rating!!, title!!)
-        likeViewModel.addLike(like)
+    override fun getItemCount(): Int {
+        return if (productList == null) 0 else productList!!.size
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -112,7 +105,7 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
     }
 
     @SuppressLint("SetTextI18n")
-    private fun loadImage(holder: MyViewHolder, product: ProductModelItem?) {
+    private fun loadImage(holder: MyViewHolder, product: Like?) {
         CoroutineScope(Dispatchers.IO).launch {
             val bitmap = Glide.with(holder.itemView.context)
                 .asBitmap()
