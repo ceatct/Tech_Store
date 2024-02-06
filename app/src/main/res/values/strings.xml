@@ -61,4 +61,6 @@
     <string name="havent">Want to create an account?</string>
     <string name="fill">Fill all!</string>
 
+    <string name="empty">Add some items!</string>
+
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,26 +9,47 @@
     tools:context=".fragments.LikeFragment"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/favorites" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:itemCount="5"
+            android:layout_gravity="center_horizontal"
+            tools:listitem="@layout/item"/>
+
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:visibility="gone"
         android:textColor="@color/black"
+        android:layout_gravity="center"
         android:fontFamily="@font/montserrat"
-        android:text="@string/favorites" />
+        android:text="@string/empty" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:itemCount="5"
-        android:layout_gravity="center_horizontal"
-        tools:listitem="@layout/item"/>
-
-</LinearLayout>
+</FrameLayout>

@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.search.SearchView
+    <SearchView
         android:id="@+id/search"
         style="@style/CustomSearchViewStyle"
         android:layout_width="match_parent"

@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.inspire.techstore.R
 import com.inspire.techstore.adapters.ImageAdapter
 import com.inspire.techstore.fragments.models.ViewFragmentViewModel
@@ -68,6 +69,11 @@ class ViewFragment : Fragment() {
         info = view.findViewById(R.id.info)
         back = view.findViewById(R.id.back)
 
+        val header = requireActivity().findViewById<ViewGroup>(R.id.include)
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        header.visibility = GONE
+        bottomNavigationView.visibility = GONE
+
         close.setOnClickListener {
             item.visibility = VISIBLE
             fullView.visibility = GONE
@@ -76,6 +82,8 @@ class ViewFragment : Fragment() {
         back.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
             fragmentManager.popBackStackImmediate()
+            header.visibility = VISIBLE
+            bottomNavigationView.visibility = VISIBLE
         }
 
         viewModel.getLiveDataObserver().observe(viewLifecycleOwner) { data ->

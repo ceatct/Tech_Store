@@ -7,9 +7,9 @@ import com.inspire.techstore.api.data.Rating
 @Entity(tableName = "like_table")
 data class Like(
     @PrimaryKey(autoGenerate = true)
+    val id: Int,
     val category: String,
     val description: String,
-    val id: Int,
     val image: String,
     val price: Double,
     val rating: Rating,

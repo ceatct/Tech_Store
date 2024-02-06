@@ -18,7 +18,10 @@ class ResultFragment : Fragment() {
 
     private lateinit var category: String
 
-    private val productAdapter = ProductAdapter(ViewModelProvider(this))
+    private val productAdapter by lazy {
+        val viewModelProvider = ViewModelProvider(this)
+        ProductAdapter(viewModelProvider)
+    }
 
     private val viewModel by lazy {
         ViewModelProvider(this)[ResultFragmentViewModel::class.java]

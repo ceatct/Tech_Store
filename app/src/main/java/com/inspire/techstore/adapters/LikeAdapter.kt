@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,6 +72,7 @@ class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerV
 
         holder.action.setOnClickListener{
             deleteItem(productList?.get(position)!!)
+            Toast.makeText(holder.itemView.context, "Deleted!", Toast.LENGTH_SHORT).show()
         }
 
     }

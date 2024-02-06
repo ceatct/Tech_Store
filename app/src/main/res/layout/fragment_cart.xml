@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <TextView
             android:id="@+id/textView"
@@ -26,24 +27,39 @@
             android:text="@string/cart" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_category"
+            android:id="@+id/recycler_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
             tools:itemCount="5"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             tools:listitem="@layout/item"/>
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty" />
+
     <Button
+        android:id="@+id/order"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@drawable/action_button"
         android:layout_marginHorizontal="15dp"
         android:layout_marginVertical="15dp"
+        android:visibility="gone"
         android:text="@string/add"
         android:layout_gravity="bottom"
         android:textColor="@color/white"

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -69,6 +70,7 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
 
         holder.action.setOnClickListener{
             insertDataToDatabase(position)
+            Toast.makeText(holder.itemView.context, "Added!", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -86,7 +88,7 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
         val rating = productList?.get(position)?.rating
         val title = productList?.get(position)?.title
 
-        val like = Like(category!!, description!!, id!!, image!!, price!!, rating!!, title!!)
+        val like = Like(id!!, description!!, category!!, image!!, price!!, rating!!, title!!)
         likeViewModel.addLike(like)
     }
 
