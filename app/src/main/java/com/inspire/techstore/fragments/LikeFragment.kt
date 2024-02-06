@@ -17,13 +17,14 @@ import com.inspire.techstore.db.LikeViewModel
 
 class LikeFragment : Fragment() {
 
-    private lateinit var recyclerLike: RecyclerView
     private val productAdapter by lazy {
         val viewModelProvider = ViewModelProvider(this)
         LikeAdapter(viewModelProvider)
     }
+
     private lateinit var likeViewModel: LikeViewModel
-    private lateinit var empty: TextView
+    private lateinit var emptyTextView: TextView
+    private lateinit var recyclerLike: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +42,7 @@ class LikeFragment : Fragment() {
 
         likeViewModel = ViewModelProvider(this)[LikeViewModel::class.java]
 
-        empty = view.findViewById(R.id.empty)
+        emptyTextView = view.findViewById(R.id.empty)
 
         recyclerLike = view.findViewById(R.id.recycler_like)
         recyclerLike.adapter = productAdapter
@@ -51,9 +52,9 @@ class LikeFragment : Fragment() {
             productAdapter.notifyDataSetChanged()
 
             if (like.isEmpty()) {
-                empty.visibility = VISIBLE
+                emptyTextView.visibility = VISIBLE
             } else {
-                empty.visibility = GONE
+                emptyTextView.visibility = GONE
             }
         }
 

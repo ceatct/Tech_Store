@@ -13,8 +13,8 @@ import com.inspire.techstore.R
 class CartFragment : Fragment() {
 
     private lateinit var recyclerCart: RecyclerView
-    private lateinit var empty: TextView
-    private lateinit var order: Button
+    private lateinit var emptyTextView: TextView
+    private lateinit var orderButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +29,9 @@ class CartFragment : Fragment() {
     ): View? {
         val view =  inflater.inflate(R.layout.fragment_cart, container, false)
 
-        empty = view.findViewById(R.id.empty)
+        emptyTextView = view.findViewById(R.id.empty)
         recyclerCart = view.findViewById(R.id.recycler_cart)
-        order = view.findViewById(R.id.order)
+        orderButton = view.findViewById(R.id.order)
 
 
 

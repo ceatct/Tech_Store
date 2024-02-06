@@ -16,8 +16,6 @@ import com.inspire.techstore.fragments.models.ResultFragmentViewModel
 
 class ResultFragment : Fragment() {
 
-    private lateinit var category: String
-
     private val productAdapter by lazy {
         val viewModelProvider = ViewModelProvider(this)
         ProductAdapter(viewModelProvider)
@@ -27,6 +25,7 @@ class ResultFragment : Fragment() {
         ViewModelProvider(this)[ResultFragmentViewModel::class.java]
     }
 
+    private lateinit var category: String
     private lateinit var recyclerCategory: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,12 +46,12 @@ class ResultFragment : Fragment() {
 
         recyclerCategory.adapter = productAdapter
 
-        viewModel.getLiveDataObserver().observe(viewLifecycleOwner) { data ->
-            if (data != null) {
-                productAdapter.setProductList(data)
+        viewModel.getLiveDataObserver().observe(viewLifecycleOwner) { product ->
+            if (product != null) {
+                productAdapter.setProductList(product)
                 productAdapter.notifyDataSetChanged()
             } else {
-                Toast.makeText(requireContext(), "data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Error with products loading", Toast.LENGTH_SHORT).show()
             }
         }
 

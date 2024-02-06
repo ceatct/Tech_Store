@@ -7,7 +7,6 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -20,28 +19,20 @@ import com.inspire.techstore.adapters.ImageAdapter
 import com.inspire.techstore.fragments.models.ViewFragmentViewModel
 import me.relex.circleindicator.CircleIndicator3
 
-
 class ViewFragment : Fragment() {
-
-    private lateinit var viewpager: ViewPager2
-    private lateinit var viewpager2: ViewPager2
-    private lateinit var dots: CircleIndicator3
-    private lateinit var dots2: CircleIndicator3
-
-    private lateinit var item: LinearLayout
-    private lateinit var fullView: LinearLayout
-    private lateinit var close: ImageButton
-
-    private lateinit var id: String
-
-    private lateinit var name : TextView
-    private lateinit var price : TextView
-    private lateinit var info : TextView
-    private lateinit var back : LinearLayout
 
     private val viewModel by lazy {
         ViewModelProvider(this)[ViewFragmentViewModel::class.java]
     }
+
+    private lateinit var id: String
+    private lateinit var viewpager: ViewPager2
+    private lateinit var pagerIndicator: CircleIndicator3
+    private lateinit var item: LinearLayout
+    private lateinit var name : TextView
+    private lateinit var price : TextView
+    private lateinit var info : TextView
+    private lateinit var backActionLayout : LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,32 +47,23 @@ class ViewFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_view, container, false)
 
         viewpager = view.findViewById(R.id.viewpager)
-        viewpager2 = view.findViewById(R.id.viewpager2)
-        dots = view.findViewById(R.id.dots)
-        dots2 = view.findViewById(R.id.dots2)
-
+        pagerIndicator = view.findViewById(R.id.dots)
         item = view.findViewById(R.id.item)
-        fullView = view.findViewById(R.id.fullView)
-        close = view.findViewById(R.id.close)
-
         name = view.findViewById(R.id.name)
         price = view.findViewById(R.id.price)
         info = view.findViewById(R.id.info)
-        back = view.findViewById(R.id.back)
+        backActionLayout = view.findViewById(R.id.back)
 
         val header = requireActivity().findViewById<ViewGroup>(R.id.include)
         val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         header.visibility = GONE
         bottomNavigationView.visibility = GONE
 
-        close.setOnClickListener {
-            item.visibility = VISIBLE
-            fullView.visibility = GONE
-        }
-
-        back.setOnClickListener {
+        backActionLayout.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
-            fragmentManager.popBackStackImmediate()
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragments, MainFragment())
+            fragmentTransaction.commit()
             header.visibility = VISIBLE
             bottomNavigationView.visibility = VISIBLE
         }
@@ -96,8 +78,6 @@ class ViewFragment : Fragment() {
                 viewpager.adapter = ImageAdapter(imgList)
                 viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-                viewpager2.adapter = ImageAdapter(imgList)
-                viewpager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
             } else {
                 Toast.makeText(requireContext(), "data", Toast.LENGTH_SHORT).show()
             }
@@ -105,8 +85,7 @@ class ViewFragment : Fragment() {
 
         viewModel.makeAPICall(id)
 
-        dots.setViewPager(viewpager)
-        dots2.setViewPager(viewpager2)
+        pagerIndicator.setViewPager(viewpager)
 
         return view
     }

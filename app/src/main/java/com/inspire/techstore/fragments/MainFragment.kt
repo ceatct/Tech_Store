@@ -18,9 +18,6 @@ import com.inspire.techstore.fragments.models.MainFragmentViewModel
 import me.relex.circleindicator.CircleIndicator3
 class MainFragment : Fragment() {
 
-   // private val productAdapter = ProductAdapter(ViewModelProvider(this))
-    private val categoriesAdapter = CategoriesAdapter()
-
     private val viewModel by lazy {
         ViewModelProvider(this)[MainFragmentViewModel::class.java]
     }
@@ -30,8 +27,9 @@ class MainFragment : Fragment() {
         ProductAdapter(viewModelProvider)
     }
 
+    private val categoriesAdapter = CategoriesAdapter()
     private lateinit var viewpager: ViewPager2
-    private lateinit var dots: CircleIndicator3
+    private lateinit var pagerIndicator: CircleIndicator3
     private lateinit var recyclerSale: RecyclerView
     private lateinit var recyclerNew: RecyclerView
     private lateinit var recyclerCategory: RecyclerView
@@ -44,7 +42,7 @@ class MainFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
 
         viewpager = view.findViewById(R.id.viewpager)
-        dots = view.findViewById(R.id.dots)
+        pagerIndicator = view.findViewById(R.id.dots)
         recyclerSale = view.findViewById(R.id.recycler_sale)
         recyclerNew = view.findViewById(R.id.recycler_new)
         recyclerCategory = view.findViewById(R.id.recycler_category)
@@ -53,21 +51,21 @@ class MainFragment : Fragment() {
         recyclerNew.adapter = productAdapter
         recyclerCategory.adapter = categoriesAdapter
 
-        viewModel.getLiveDataObserver().observe(viewLifecycleOwner) { data ->
-            if (data != null) {
-                productAdapter.setProductList(data)
+        viewModel.getLiveDataObserver().observe(viewLifecycleOwner) { product ->
+            if (product != null) {
+                productAdapter.setProductList(product)
                 productAdapter.notifyDataSetChanged()
             } else {
-                Toast.makeText(requireContext(), "data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Error with products loading", Toast.LENGTH_SHORT).show()
             }
         }
 
-        viewModel.getLiveDataObserverCategories().observe(viewLifecycleOwner) { data2 ->
-            if (data2 != null) {
-                categoriesAdapter.setProductList(data2)
+        viewModel.getLiveDataObserverCategories().observe(viewLifecycleOwner) { category ->
+            if (category != null) {
+                categoriesAdapter.setProductList(category)
                 categoriesAdapter.notifyDataSetChanged()
             } else {
-                Toast.makeText(requireContext(), "data2", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Error with categories loading", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -81,7 +79,7 @@ class MainFragment : Fragment() {
         viewpager.adapter = ImageAdapter(imgList)
         viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-        dots.setViewPager(viewpager)
+        pagerIndicator.setViewPager(viewpager)
 
         return view
     }
