@@ -2,8 +2,11 @@ package com.inspire.techstore.fragments.models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.inspire.techstore.api.NPointRetrofitInstance
+import com.inspire.techstore.api.NPointServiceInterface
 import com.inspire.techstore.api.RetroServiceInterface
 import com.inspire.techstore.api.RetrofitInstance
+import com.inspire.techstore.api.data.BannersModel
 import com.inspire.techstore.api.data.CategoriesModel
 import com.inspire.techstore.api.data.ProductModelItem
 import retrofit2.Call
@@ -14,6 +17,7 @@ class MainFragmentViewModel: ViewModel() {
 
     var liveDataList: MutableLiveData<List<ProductModelItem>?> = MutableLiveData()
     var liveDataListCategories: MutableLiveData<CategoriesModel?> = MutableLiveData()
+    var liveDataListBanners: MutableLiveData<BannersModel?> = MutableLiveData()
 
     fun getLiveDataObserver(): MutableLiveData<List<ProductModelItem>?> {
         return liveDataList
@@ -21,6 +25,10 @@ class MainFragmentViewModel: ViewModel() {
 
     fun getLiveDataObserverCategories(): MutableLiveData<CategoriesModel?> {
         return liveDataListCategories
+    }
+
+    fun getLiveDataObserverBanners(): MutableLiveData<BannersModel?> {
+        return liveDataListBanners
     }
 
     fun makeAPICall() {
@@ -61,6 +69,28 @@ class MainFragmentViewModel: ViewModel() {
                 response: Response<CategoriesModel>
             ) {
                 liveDataListCategories.postValue(response.body())
+            }
+
+        })
+
+    }
+
+    fun makeAPICallBanners() {
+        val retroInstance =  NPointRetrofitInstance.getRetrofitInstance()
+        val retroService = retroInstance.create(NPointServiceInterface::class.java)
+        val call = retroService.getBanners()
+
+        call.enqueue(object : Callback<BannersModel> {
+
+            override fun onFailure(call: Call<BannersModel>, t: Throwable) {
+                liveDataListBanners.postValue(null)
+            }
+
+            override fun onResponse(
+                call: Call<BannersModel>,
+                response: Response<BannersModel>
+            ) {
+                liveDataListBanners.postValue(response.body())
             }
 
         })

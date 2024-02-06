@@ -51,6 +51,11 @@
             tools:itemCount="5"
             tools:listitem="@layout/item"/>
 
+        <ProgressBar
+            android:id="@+id/sale_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
@@ -74,6 +79,11 @@
             tools:itemCount="5"
             tools:listitem="@layout/item"/>
 
+        <ProgressBar
+            android:id="@+id/new_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
@@ -95,6 +105,11 @@
             app:spanCount="2"
             tools:itemCount="5"
             tools:listitem="@layout/item_category"/>
+
+        <ProgressBar
+            android:id="@+id/category_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

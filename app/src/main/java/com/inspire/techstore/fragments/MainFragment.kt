@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +34,9 @@ class MainFragment : Fragment() {
     private lateinit var recyclerSale: RecyclerView
     private lateinit var recyclerNew: RecyclerView
     private lateinit var recyclerCategory: RecyclerView
+    private lateinit var progressBarSale: ProgressBar
+    private lateinit var progressBarNew: ProgressBar
+    private lateinit var progressBarCategory: ProgressBar
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
@@ -46,6 +50,9 @@ class MainFragment : Fragment() {
         recyclerSale = view.findViewById(R.id.recycler_sale)
         recyclerNew = view.findViewById(R.id.recycler_new)
         recyclerCategory = view.findViewById(R.id.recycler_category)
+        progressBarSale = view.findViewById(R.id.sale_progress)
+        progressBarNew = view.findViewById(R.id.new_progress)
+        progressBarCategory = view.findViewById(R.id.category_progress)
 
         recyclerSale.adapter = productAdapter
         recyclerNew.adapter = productAdapter
@@ -55,6 +62,15 @@ class MainFragment : Fragment() {
             if (product != null) {
                 productAdapter.setProductList(product)
                 productAdapter.notifyDataSetChanged()
+
+                if (product.isEmpty()) {
+                    progressBarSale.visibility = View.VISIBLE
+                    progressBarNew.visibility = View.VISIBLE
+                } else {
+                    progressBarSale.visibility = View.GONE
+                    progressBarNew.visibility = View.GONE
+                }
+
             } else {
                 Toast.makeText(requireContext(), "Error with products loading", Toast.LENGTH_SHORT).show()
             }
@@ -64,22 +80,33 @@ class MainFragment : Fragment() {
             if (category != null) {
                 categoriesAdapter.setProductList(category)
                 categoriesAdapter.notifyDataSetChanged()
+
+                if (category.isEmpty()) {
+                    progressBarCategory.visibility = View.VISIBLE
+                } else {
+                    progressBarCategory.visibility = View.GONE
+                }
+
             } else {
                 Toast.makeText(requireContext(), "Error with categories loading", Toast.LENGTH_SHORT).show()
             }
         }
 
+        viewModel.getLiveDataObserverBanners().observe(viewLifecycleOwner) { banner ->
+            if (banner != null) {
+                val imgList = ArrayList<String>(banner)
+
+                viewpager.adapter = ImageAdapter(imgList)
+                viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                pagerIndicator.setViewPager(viewpager)
+            } else {
+                Toast.makeText(requireContext(), "Error with banners loading", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         viewModel.makeAPICall()
         viewModel.makeAPICallCategories()
-
-        val imgList = arrayListOf(
-            "https://as2.ftcdn.net/v2/jpg/04/57/27/23/1000_F_457272301_TAhCbk02tLPvPftIQfiWML5UHFiyc1XQ.jpg",
-            "https://mobisoftinfotech.com/resources/wp-content/uploads/2022/08/Banner-1.png")
-
-        viewpager.adapter = ImageAdapter(imgList)
-        viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-
-        pagerIndicator.setViewPager(viewpager)
+        viewModel.makeAPICallBanners()
 
         return view
     }
