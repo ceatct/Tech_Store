@@ -54,7 +54,10 @@
         <ProgressBar
             android:id="@+id/sale_progress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:progressTint="@color/black"
+            android:secondaryProgressTint="@color/black"
+            android:indeterminateTint="@color/black" />
 
         <TextView
             android:id="@+id/textView3"
@@ -82,7 +85,10 @@
         <ProgressBar
             android:id="@+id/new_progress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:progressTint="@color/black"
+            android:secondaryProgressTint="@color/black"
+            android:indeterminateTint="@color/black" />
 
         <TextView
             android:id="@+id/textView4"
@@ -109,7 +115,10 @@
         <ProgressBar
             android:id="@+id/category_progress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:progressTint="@color/black"
+            android:secondaryProgressTint="@color/black"
+            android:indeterminateTint="@color/black" />
 
     </LinearLayout>
 

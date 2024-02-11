@@ -1,4 +1,4 @@
-package com.inspire.techstore.db
+package com.inspire.techstore.db.like
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

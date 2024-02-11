@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.inspire.techstore.R
 import com.inspire.techstore.adapters.LikeAdapter
-import com.inspire.techstore.db.LikeViewModel
+import com.inspire.techstore.db.like.LikeViewModel
 
 class LikeFragment : Fragment() {
 

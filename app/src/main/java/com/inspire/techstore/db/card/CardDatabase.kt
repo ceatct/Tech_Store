@@ -1,22 +1,20 @@
-package com.inspire.techstore.db
+package com.inspire.techstore.db.card
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 
-@Database(entities = [Like::class], version = 1, exportSchema = false)
-@TypeConverters(RatingConverter::class)
-abstract class LikeDatabase: RoomDatabase() {
+@Database(entities = [Card::class], version = 1, exportSchema = false)
+abstract class CardDatabase: RoomDatabase() {
 
-    abstract fun likeDao():LikeDao
+    abstract fun cardDao(): CardDao
 
     companion object{
         @Volatile
-        private var INSTANCE: LikeDatabase? = null
+        private var INSTANCE: CardDatabase? = null
 
-        fun getDatabase(context: Context): LikeDatabase{
+        fun getDatabase(context: Context): CardDatabase {
             val tempInstance = INSTANCE
             if(tempInstance != null){
                 return tempInstance
@@ -24,8 +22,8 @@ abstract class LikeDatabase: RoomDatabase() {
             synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    LikeDatabase::class.java,
-                    "like_database"
+                    CardDatabase::class.java,
+                    "card_database"
                 ).build()
                 INSTANCE = instance
                 return  instance
@@ -34,3 +32,4 @@ abstract class LikeDatabase: RoomDatabase() {
     }
 
 }
+

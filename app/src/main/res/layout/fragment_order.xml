@@ -132,7 +132,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:ignore="SpeakableTextPresentCheck"
             tools:itemCount="3"
-            tools:listitem="@layout/select_input_item" />
+            tools:listitem="@layout/item_select_input" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -176,7 +176,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:ignore="SpeakableTextPresentCheck"
             tools:itemCount="3"
-            tools:listitem="@layout/select_input_item" />
+            tools:listitem="@layout/item_select_input" />
 
         <Button
             android:layout_width="match_parent"

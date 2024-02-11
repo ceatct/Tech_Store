@@ -63,4 +63,13 @@
 
     <string name="empty">Add some items!</string>
 
+    <string name="card_number">Card number</string>
+    <string name="card_holder">Holder name</string>
+    <string name="card_cvv">CVV code</string>
+    <string name="card_date">End date</string>
+    <string name="add_bt">Add</string>
+
+    <string name="yy">YY</string>
+    <string name="mm">MM</string>
+
 </resources>

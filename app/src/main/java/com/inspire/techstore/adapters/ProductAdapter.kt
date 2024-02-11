@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inspire.techstore.R
 import com.inspire.techstore.api.data.ProductModelItem
-import com.inspire.techstore.db.Like
-import com.inspire.techstore.db.LikeViewModel
+import com.inspire.techstore.db.like.Like
+import com.inspire.techstore.db.like.LikeViewModel
 import com.inspire.techstore.fragments.ViewFragment
 import com.makeramen.roundedimageview.RoundedImageView
 import kotlinx.coroutines.*

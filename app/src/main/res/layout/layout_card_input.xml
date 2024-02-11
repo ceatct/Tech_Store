@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        tools:ignore="UselessParent">
+
+        <EditText
+            android:id="@+id/card_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/card_number"
+            android:maxLength="16"
+            android:inputType="number"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/black"
+            tools:ignore="Autofill,SpeakableTextPresentCheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/card_date_yy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.5"
+                android:maxLength="2"
+                android:hint="@string/yy"
+                android:inputType="date"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/black"
+                tools:ignore="Autofill,SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/card_date_mm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.5"
+                android:maxLength="2"
+                android:hint="@string/mm"
+                android:inputType="date"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/black"
+                tools:ignore="Autofill,SpeakableTextPresentCheck" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/card_holderName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/card_holder"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/black"
+            tools:ignore="Autofill,SpeakableTextPresentCheck,TextFields" />
+
+        <EditText
+            android:id="@+id/card_cvv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/card_cvv"
+            android:inputType="number"
+            android:maxLength="3"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/black"
+            tools:ignore="Autofill,SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/action_button"
+            android:text="@string/add_bt"
+            android:textColor="@color/white"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+</FrameLayout>

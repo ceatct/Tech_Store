@@ -21,12 +21,12 @@
             android:background="@color/black"/>
 
         <GridLayout
-            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp">
 
             <ImageView
+                android:id="@+id/login_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:ignore="ContentDescription"
@@ -34,9 +34,10 @@
                 app:srcCompat="@drawable/ic_profile" />
 
             <TextView
+                android:id="@+id/login_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/login"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -57,23 +58,7 @@
             android:layout_marginHorizontal="15dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:ignore="ContentDescription"
-                android:layout_gravity="center_vertical"
-                app:srcCompat="@drawable/ic_percent" />
-
-            <TextView
-                android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sales"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="20dp"/>
-
-            <ImageView
+                android:id="@+id/alert_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="1"
@@ -83,9 +68,10 @@
                 app:srcCompat="@drawable/ic_alarm" />
 
             <TextView
+                android:id="@+id/alert_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/alerts"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -94,26 +80,7 @@
                 android:layout_marginStart="20dp"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="2"
-                android:layout_column="0"
-                tools:ignore="ContentDescription"
-                android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/ic_clock" />
-
-            <TextView
-                android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/view_history"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="20dp"/>
-
-            <ImageView
+                android:id="@+id/wallet_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="3"
@@ -123,9 +90,10 @@
                 app:srcCompat="@drawable/ic_card" />
 
             <TextView
+                android:id="@+id/wallet_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/wallet"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -134,6 +102,7 @@
                 android:layout_marginStart="20dp"/>
 
             <ImageView
+                android:id="@+id/orders_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="4"
@@ -143,9 +112,10 @@
                 app:srcCompat="@drawable/ic_note" />
 
             <TextView
+                android:id="@+id/orders_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/order_history"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -167,6 +137,7 @@
             android:layout_marginHorizontal="15dp">
 
             <ImageView
+                android:id="@+id/support_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -174,9 +145,10 @@
                 app:srcCompat="@drawable/ic_chat" />
 
             <TextView
+                android:id="@+id/support_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/support"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -184,6 +156,7 @@
                 android:layout_marginStart="20dp"/>
 
             <ImageView
+                android:id="@+id/phone_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="1"
@@ -193,9 +166,10 @@
                 app:srcCompat="@drawable/ic_call" />
 
             <TextView
+                android:id="@+id/phone_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/phone"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -204,6 +178,7 @@
                 android:layout_marginStart="20dp"/>
 
             <ImageView
+                android:id="@+id/mail_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="2"
@@ -213,9 +188,10 @@
                 app:srcCompat="@drawable/ic_mail" />
 
             <TextView
+                android:id="@+id/mail_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/mail"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -237,6 +213,7 @@
             android:layout_marginHorizontal="15dp">
 
             <ImageView
+                android:id="@+id/inst_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -244,9 +221,10 @@
                 app:srcCompat="@drawable/ic_inst" />
 
             <TextView
+                android:id="@+id/inst_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/inst"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -254,6 +232,7 @@
                 android:layout_marginStart="20dp"/>
 
             <ImageView
+                android:id="@+id/site_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="1"
@@ -263,9 +242,10 @@
                 app:srcCompat="@drawable/ic_globe" />
 
             <TextView
+                android:id="@+id/site_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/site"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -287,6 +267,7 @@
             android:layout_marginHorizontal="15dp">
 
             <ImageView
+                android:id="@+id/about_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -294,9 +275,10 @@
                 tools:ignore="ContentDescription" />
 
             <TextView
+                android:id="@+id/about_text"
                 android:fontFamily="@font/montserrat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/about"
                 android:textColor="@color/black"
                 android:textSize="16sp"

@@ -15,7 +15,7 @@ class ImageAdapter(private var images: ArrayList<String>) : RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageAdapter.Pager2ViewHolder {
-        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.image_item_layout, parent, false))
+        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_image_layout, parent, false))
     }
 
     override fun getItemCount(): Int {
