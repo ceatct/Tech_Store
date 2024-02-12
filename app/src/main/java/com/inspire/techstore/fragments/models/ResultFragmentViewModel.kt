@@ -39,4 +39,26 @@ class ResultFragmentViewModel : ViewModel() {
 
     }
 
+    fun makeAPICallSearch() {
+        val retroInstance =  RetrofitInstance. getRetrofitInstance()
+        val retroService = retroInstance.create(RetroServiceInterface::class.java)
+        val call = retroService.getProductsList()
+
+        call.enqueue(object : Callback<List<ProductModelItem>> {
+
+            override fun onFailure(call: Call<List<ProductModelItem>>, t: Throwable) {
+                liveDataList.postValue(null)
+            }
+
+            override fun onResponse(
+                call: Call<List<ProductModelItem>>,
+                response: Response<List<ProductModelItem>>
+            ) {
+                liveDataList.postValue(response.body())
+            }
+
+        })
+
+    }
+
 }

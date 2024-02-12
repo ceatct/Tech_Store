@@ -25,6 +25,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
+            app:ci_width="5dp"
+            app:ci_height="5dp"
             app:ci_drawable="@drawable/active_dot"
             app:ci_drawable_unselected="@drawable/non_active_dot"/>
 

@@ -30,4 +30,25 @@
         android:layout_gravity="center_horizontal"
         tools:listitem="@layout/item"/>
 
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/empty_result" />
+
+    <ProgressBar
+        android:id="@+id/result_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/black"
+        android:secondaryProgressTint="@color/black"
+        android:indeterminateTint="@color/black" />
+
 </LinearLayout>

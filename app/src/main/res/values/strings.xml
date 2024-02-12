@@ -72,4 +72,8 @@
     <string name="yy">YY</string>
     <string name="mm">MM</string>
 
+    <string name="empty_result">No products were found for your request</string>
+    <string name="want_find">Want to find</string>
+    <string name="result_for">Result for</string>
+
 </resources>
