@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.inspire.techstore.R
 import com.inspire.techstore.fragments.models.ProfileFragmentViewModel
 
@@ -76,16 +76,16 @@ class ProfileFragment : Fragment() {
         aboutTextView = view.findViewById(R.id.about_text)
 
 
-        repeat(listOf(loginImageView, loginTextView).size) { findNavController().navigate(R.id.action_profileFragment_to_registerFragment) }
+        listOf(loginImageView, loginTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, RegisterFragment(), R.id.fragments) }}
 
         //add alert fragment
-        //listOf(alertImageView, alertTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, ResultFragment(), R.id.fragments) }}
+        listOf(alertImageView, alertTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, ResultFragment(), R.id.fragments) }}
 
 
-        repeat(listOf(walletImageView, walletTextView).size) { findNavController().navigate(R.id.action_profileFragment_to_cardsFragment) }
+        listOf(walletImageView, walletTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, CardsFragment(), R.id.fragments) }}
 
         //add orders history fragment
-        //listOf(ordersHistoryImageView, ordersHistoryTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, ResultFragment(), R.id.fragments) }}
+        listOf(ordersHistoryImageView, ordersHistoryTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, ResultFragment(), R.id.fragments) }}
 
 
         listOf(supportImageView, supportTextView).forEach { it.setOnClickListener { Toast.makeText(requireContext(), "Open site with support chat", Toast.LENGTH_SHORT).show() }}

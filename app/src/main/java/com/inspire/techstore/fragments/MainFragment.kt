@@ -15,6 +15,7 @@ import com.inspire.techstore.R
 import com.inspire.techstore.adapters.CategoriesAdapter
 import com.inspire.techstore.adapters.ImageAdapter
 import com.inspire.techstore.adapters.ProductAdapter
+import com.inspire.techstore.api.data.CategoriesModel
 import com.inspire.techstore.fragments.models.MainFragmentViewModel
 import me.relex.circleindicator.CircleIndicator3
 class MainFragment : Fragment() {
@@ -78,7 +79,12 @@ class MainFragment : Fragment() {
 
         viewModel.getLiveDataObserverCategories().observe(viewLifecycleOwner) { category ->
             if (category != null) {
-                categoriesAdapter.setProductList(category)
+
+                val newList = CategoriesModel()
+                newList.addAll(category.take(3))
+                newList.add("More")
+
+                categoriesAdapter.setProductList(newList)
                 categoriesAdapter.notifyDataSetChanged()
 
                 if (category.isEmpty()) {

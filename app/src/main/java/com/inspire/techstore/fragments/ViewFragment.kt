@@ -12,7 +12,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.inspire.techstore.R
@@ -61,7 +60,10 @@ class ViewFragment : Fragment() {
         bottomNavigationView.visibility = GONE
 
         backActionLayout.setOnClickListener {
-            findNavController().navigate(R.id.action_viewFragment_to_mainFragment2)
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragments, MainFragment())
+            fragmentTransaction.commit()
             header.visibility = VISIBLE
             bottomNavigationView.visibility = VISIBLE
         }

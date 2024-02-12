@@ -9,7 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.inspire.techstore.R
@@ -60,7 +59,10 @@ class CardsFragment : Fragment() {
         recyclerCard.adapter = cardAdapter
 
         backActionLayout.setOnClickListener {
-            findNavController().navigate(R.id.action_cardsFragment_to_profileFragment)
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragments, MainFragment())
+            fragmentTransaction.commit()
         }
 
         addButton.setOnClickListener{

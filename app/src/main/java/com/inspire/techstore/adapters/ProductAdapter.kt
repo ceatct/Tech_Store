@@ -43,14 +43,12 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
 
         likeViewModel = viewModelProvider[LikeViewModel::class.java]
 
-        // Load image only if item is visible
         if (isVisible()) {
             loadImage(holder, product)
         }
 
-        // Set other item data
         holder.name.text = product?.title
-        holder.oldPrice.text = "$1.20"
+      //  holder.oldPrice.text = "$1.20"
         holder.price.text = "$" + product?.price.toString()
 
         holder.itemView.setOnClickListener {

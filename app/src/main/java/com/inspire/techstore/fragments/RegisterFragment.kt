@@ -10,7 +10,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textfield.TextInputEditText
 import com.inspire.techstore.R
@@ -70,7 +69,10 @@ class RegisterFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         backActionLayout.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_profileFragment)
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragments, ProfileFragment())
+            fragmentTransaction.commit()
             header.visibility = View.VISIBLE
             bottomNavigationView.visibility = View.VISIBLE
         }

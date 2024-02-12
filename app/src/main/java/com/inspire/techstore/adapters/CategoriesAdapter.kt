@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.inspire.techstore.R
 import com.inspire.techstore.api.data.CategoriesModel
+import com.inspire.techstore.fragments.CategoriesFragment
 import com.inspire.techstore.fragments.ResultFragment
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
@@ -27,40 +28,30 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>()
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
         holder.text.text = productList?.get(position)
 
-        holder.itemView.setOnClickListener {
-
-            val category = productList?.get(position)
-            val fragment = ResultFragment()
-
-            fragment.arguments = Bundle().apply {
-                putString("category", category)
+        if (productList?.get(position).equals("More")) {
+            holder.itemView.setOnClickListener {
+                (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragments, CategoriesFragment())
+                    .addToBackStack(null)
+                    .commit()
             }
+        } else {
+            holder.itemView.setOnClickListener {
+                val category = productList?.get(position)
+                val fragment = ResultFragment()
 
-            (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.fragments, fragment)
-                .addToBackStack(null)
-                .commit()
+                fragment.arguments = Bundle().apply {
+                    putString("category", category)
+                }
+
+                (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragments, fragment)
+                    .addToBackStack(null)
+                    .commit()
+            }
         }
-
-        /*holder.itemView.setOnLongClickListener {
-
-            val category = productList?.get(position)
-            val fragment = ResultFragment()
-
-            fragment.arguments = Bundle().apply {
-                putString("category", category)
-            }
-
-            (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.fragments, fragment)
-                .addToBackStack(null)
-                .commit()
-
-            return@setOnLongClickListener false
-        }*/
     }
 
     override fun getItemCount(): Int {
