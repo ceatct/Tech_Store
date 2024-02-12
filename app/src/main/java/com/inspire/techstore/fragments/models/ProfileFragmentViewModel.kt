@@ -3,8 +3,6 @@ package com.inspire.techstore.fragments.models
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 
 class ProfileFragmentViewModel : ViewModel() {
@@ -26,13 +24,6 @@ class ProfileFragmentViewModel : ViewModel() {
         intent.data = Uri.parse("mailto:")
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(recipientEmail))
         context.startActivity(intent)
-    }
-
-    fun switchFragment(activity: AppCompatActivity, fragment: Fragment, containerId: Int) {
-        val fragmentManager = activity.supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(containerId, fragment)
-        transaction.commit()
     }
 
 }
