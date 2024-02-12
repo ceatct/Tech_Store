@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.inspire.techstore.R
 
@@ -36,6 +37,15 @@ class CartFragment : Fragment() {
 
 
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+
+            }
+        })
     }
 
 }
