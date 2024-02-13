@@ -1,8 +1,10 @@
 package com.inspire.techstore.api
 
 import com.inspire.techstore.api.data.CategoriesModel
+import com.inspire.techstore.api.data.LoginModel
 import com.inspire.techstore.api.data.ProductModelItem
 import com.inspire.techstore.api.data.User
+import com.inspire.techstore.api.data.UserTokenModel
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -25,5 +27,8 @@ interface RetroServiceInterface {
 
     @POST("users")
     suspend fun registerUser(@Body user: User): Response<User>
+
+    @POST("auth/login")
+    suspend fun loginUser(@Body login: LoginModel): Response<UserTokenModel>
 
 }

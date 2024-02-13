@@ -7,6 +7,7 @@ import com.inspire.techstore.api.RetroServiceInterface
 import com.inspire.techstore.api.RetrofitInstance
 import com.inspire.techstore.api.data.Address
 import com.inspire.techstore.api.data.Geolocation
+import com.inspire.techstore.api.data.LoginModel
 import com.inspire.techstore.api.data.Name
 import com.inspire.techstore.api.data.User
 
@@ -42,4 +43,22 @@ class RegisterFragmentViewModel: ViewModel() {
             Toast.makeText(context, response.code(), Toast.LENGTH_SHORT).show()
         }
     }
+
+    suspend fun login(username: String, password: String, context: Context) {
+        val service = RetrofitInstance.getRetrofitInstance().create(RetroServiceInterface::class.java)
+
+        val user = LoginModel(
+            username = username,
+            password = password
+        )
+
+        val response = service.loginUser(user)
+        if (response.isSuccessful) {
+            Toast.makeText(context, "Complete", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
 }

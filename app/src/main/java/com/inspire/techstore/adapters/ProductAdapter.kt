@@ -47,8 +47,11 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
             loadImage(holder, product)
         }
 
+        /*if (productList?.get(position) in compareListsById(productList!!, likeViewModel.readAllData.value!!.toList())) {
+            holder.action.setImageResource(R.drawable.ic_globe)
+        }*/
+
         holder.name.text = product?.title
-      //  holder.oldPrice.text = "$1.20"
         holder.price.text = "$" + product?.price.toString()
 
         holder.itemView.setOnClickListener {
@@ -125,6 +128,19 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
             }
         }
     }
+
+/*    private fun compareListsById(list1: List<ProductModelItem>, list2: List<Like>): List<ProductModelItem> {
+        val matchedObjects = mutableListOf<ProductModelItem>()
+        for (obj1 in list1) {
+            for (obj2 in list2) {
+                if (obj1.id == obj2.id) {
+                    matchedObjects.add(obj1)
+                    break
+                }
+            }
+        }
+        return matchedObjects
+    }*/
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: RoundedImageView

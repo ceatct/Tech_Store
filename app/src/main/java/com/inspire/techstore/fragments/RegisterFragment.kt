@@ -70,12 +70,7 @@ class RegisterFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         backActionLayout.setOnClickListener {
-            val fragmentManager = requireActivity().supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragments, ProfileFragment())
-            fragmentTransaction.commit()
-            header.visibility = View.VISIBLE
-            bottomNavigationView.visibility = View.VISIBLE
+            back()
         }
 
         loginTextView.setOnClickListener {
@@ -101,11 +96,6 @@ class RegisterFragment : Fragment() {
             phoneEditTextRegistration.text.toString()
         ).all { it.isNotEmpty() }
 
-        val allFieldsFilledLogin = listOf(
-            usernameEditTextLogin.text.toString(),
-            passwordEditTextLogin.text.toString()
-        ).all { it.isNotEmpty() }
-
         registrationButton.setOnClickListener {
             if (allFieldsFilled) {
                 coroutineScope.launch {
@@ -124,21 +114,33 @@ class RegisterFragment : Fragment() {
         }
 
         loginButton.setOnClickListener {
-            if (allFieldsFilledLogin) {
-                coroutineScope.launch {
-                    // viewModel.register(email.toString(), username.toString(), password.toString(), name.toString(), lastname.toString(), phone.toString(), requireContext())
-                }
-            } else Toast.makeText(requireContext(), R.string.fill, Toast.LENGTH_SHORT).show()
+            coroutineScope.launch {
+                viewModel.login(
+                    usernameEditTextLogin.text.toString(),
+                    passwordEditTextLogin.text.toString(), requireContext()
+                )
+            }
         }
 
         return view
+    }
+
+    private fun back(){
+        val header = requireActivity().findViewById<ViewGroup>(R.id.include)
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragments, ProfileFragment())
+        fragmentTransaction.commit()
+        header.visibility = View.VISIBLE
+        bottomNavigationView.visibility = View.VISIBLE
     }
 
     override fun onResume() {
         super.onResume()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-
+                back()
             }
         })
     }
