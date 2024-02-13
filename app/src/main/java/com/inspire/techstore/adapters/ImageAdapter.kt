@@ -1,5 +1,7 @@
 package com.inspire.techstore.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,5 +30,11 @@ class ImageAdapter(private var images: ArrayList<String>) : RecyclerView.Adapter
             .placeholder(R.drawable.placeholder)
             .error(R.drawable.placeholder)
             .into(holder.itemImage)
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(images[position])
+            holder.itemView.context.startActivity(intent)
+        }
     }
 }

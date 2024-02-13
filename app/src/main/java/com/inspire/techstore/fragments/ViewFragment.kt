@@ -61,12 +61,7 @@ class ViewFragment : Fragment() {
         bottomNavigationView.visibility = GONE
 
         backActionLayout.setOnClickListener {
-            val fragmentManager = requireActivity().supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragments, MainFragment())
-            fragmentTransaction.commit()
-            header.visibility = VISIBLE
-            bottomNavigationView.visibility = VISIBLE
+            back()
         }
 
         viewModel.getLiveDataObserver().observe(viewLifecycleOwner) { data ->
@@ -91,11 +86,22 @@ class ViewFragment : Fragment() {
         return view
     }
 
+    private fun back(){
+        val header = requireActivity().findViewById<ViewGroup>(R.id.include)
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragments, MainFragment())
+        fragmentTransaction.commit()
+        header.visibility = VISIBLE
+        bottomNavigationView.visibility = VISIBLE
+    }
+
     override fun onResume() {
         super.onResume()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-
+                back()
             }
         })
     }

@@ -27,13 +27,6 @@ class LikeFragment : Fragment() {
     private lateinit var emptyTextView: TextView
     private lateinit var recyclerLike: RecyclerView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

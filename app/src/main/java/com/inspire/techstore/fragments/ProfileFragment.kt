@@ -21,7 +21,6 @@ class ProfileFragment : Fragment() {
     }
 
     private lateinit var loginImageView : ImageView
-    private lateinit var alertImageView : ImageView
     private lateinit var walletImageView : ImageView
     private lateinit var ordersHistoryImageView : ImageView
     private lateinit var supportImageView : ImageView
@@ -30,9 +29,9 @@ class ProfileFragment : Fragment() {
     private lateinit var instagramImageView : ImageView
     private lateinit var siteImageView : ImageView
     private lateinit var aboutImageView : ImageView
+    private lateinit var addressImageView : ImageView
 
     private lateinit var loginTextView : TextView
-    private lateinit var alertTextView : TextView
     private lateinit var walletTextView : TextView
     private lateinit var ordersHistoryTextView : TextView
     private lateinit var supportTextView : TextView
@@ -41,13 +40,7 @@ class ProfileFragment : Fragment() {
     private lateinit var instagramTextView : TextView
     private lateinit var siteTextView : TextView
     private lateinit var aboutTextView : TextView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
+    private lateinit var addressTextView : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,8 +50,6 @@ class ProfileFragment : Fragment() {
 
         loginImageView = view.findViewById(R.id.login_image)
         loginTextView = view.findViewById(R.id.login_text)
-        alertImageView = view.findViewById(R.id.alert_image)
-        alertTextView = view.findViewById(R.id.alert_text)
         walletImageView = view.findViewById(R.id.wallet_image)
         walletTextView = view.findViewById(R.id.wallet_text)
         ordersHistoryImageView = view.findViewById(R.id.orders_image)
@@ -75,12 +66,11 @@ class ProfileFragment : Fragment() {
         siteTextView = view.findViewById(R.id.site_text)
         aboutImageView = view.findViewById(R.id.about_image)
         aboutTextView = view.findViewById(R.id.about_text)
+        addressImageView = view.findViewById(R.id.address_image)
+        addressTextView = view.findViewById(R.id.address_text)
 
 
         listOf(loginImageView, loginTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, RegisterFragment(), R.id.fragments) }}
-
-        //add alert fragment
-        listOf(alertImageView, alertTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, ResultFragment(), R.id.fragments) }}
 
 
         listOf(walletImageView, walletTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, CardsFragment(), R.id.fragments) }}
@@ -105,6 +95,9 @@ class ProfileFragment : Fragment() {
 
 
         listOf(aboutImageView, aboutTextView).forEach { it.setOnClickListener { viewModel.openBrowser(requireContext(), "https://www.google.com/") }}
+
+
+        listOf(addressImageView, addressTextView).forEach { it.setOnClickListener { viewModel.openBrowser(requireContext(), "https://www.google.com/") }}
 
         return view
     }

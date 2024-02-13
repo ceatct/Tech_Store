@@ -9,11 +9,10 @@
     <string name="favorites">Favorites</string>
     <string name="cart">Cart</string>
 
-    <string name="alerts">Alerts</string>
-    <string name="view_history">History views</string>
     <string name="order_history">History orders</string>
     <string name="wallet">Wallet</string>
     <string name="support">Support</string>
+    <string name="stores">Our stores</string>
     <string name="phone">0985899858</string>
     <string name="mail">support@tech.store</string>
     <string name="inst">tech.store</string>
@@ -43,7 +42,6 @@
     <string name="phone_number">Phone number</string>
 
     <string name="post">Post</string>
-
     <string name="City">City</string>
 
     <string name="card">Card</string>
@@ -66,9 +64,7 @@
     <string name="card_number">Card number</string>
     <string name="card_holder">Holder name</string>
     <string name="card_cvv">CVV code</string>
-    <string name="card_date">End date</string>
     <string name="add_bt">Add</string>
-
     <string name="yy">YY</string>
     <string name="mm">MM</string>
 

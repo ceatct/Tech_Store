@@ -36,13 +36,6 @@ class CardsFragment : Fragment() {
     private lateinit var addButton: FloatingActionButton
     private lateinit var backActionLayout : LinearLayout
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
