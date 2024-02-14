@@ -33,8 +33,7 @@
                 android:text="@string/back"
                 android:textSize="16sp"
                 android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:fontFamily="@font/montserrat"/>
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -46,7 +45,6 @@
             android:layout_marginTop="15dp"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:fontFamily="@font/montserrat"
             android:text="@string/wallet" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -73,7 +71,6 @@
         android:visibility="gone"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:fontFamily="@font/montserrat"
         android:text="@string/empty" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

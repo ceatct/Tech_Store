@@ -23,7 +23,6 @@
             android:layout_marginTop="15dp"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:fontFamily="@font/montserrat"
             android:text="@string/favorites" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -49,7 +48,6 @@
         android:visibility="gone"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:fontFamily="@font/montserrat"
         android:text="@string/empty" />
 
 </FrameLayout>

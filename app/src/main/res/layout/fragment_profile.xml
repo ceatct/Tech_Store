@@ -35,7 +35,6 @@
 
             <TextView
                 android:id="@+id/login_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/login"
@@ -69,7 +68,6 @@
 
             <TextView
                 android:id="@+id/wallet_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/wallet"
@@ -91,7 +89,6 @@
 
             <TextView
                 android:id="@+id/orders_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/order_history"
@@ -124,7 +121,6 @@
 
             <TextView
                 android:id="@+id/support_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/support"
@@ -145,7 +141,6 @@
 
             <TextView
                 android:id="@+id/phone_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/phone"
@@ -167,7 +162,6 @@
 
             <TextView
                 android:id="@+id/mail_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/mail"
@@ -200,7 +194,6 @@
 
             <TextView
                 android:id="@+id/inst_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/inst"
@@ -221,7 +214,6 @@
 
             <TextView
                 android:id="@+id/site_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/site"
@@ -244,7 +236,6 @@
 
             <TextView
                 android:id="@+id/address_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/stores"
@@ -277,7 +268,6 @@
 
             <TextView
                 android:id="@+id/about_text"
-                android:fontFamily="@font/montserrat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/about"

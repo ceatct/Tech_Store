@@ -16,7 +16,6 @@
         android:layout_marginTop="15dp"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:fontFamily="@font/montserrat"
         android:text="@string/categories" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -105,11 +105,18 @@ class ResultFragment : Fragment() {
         return view
     }
 
+    private fun back(){
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragments, MainFragment())
+        fragmentTransaction.commit()
+    }
+
     override fun onResume() {
         super.onResume()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-
+                back()
             }
         })
     }
