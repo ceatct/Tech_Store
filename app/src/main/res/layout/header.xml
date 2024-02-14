@@ -36,12 +36,12 @@
         app:searchIcon="@drawable/ic_search" />
 
     <ImageButton
-        android:id="@+id/notification"
+        android:id="@+id/favorite"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/ic_bell"
+        android:src="@drawable/ic_love"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 </LinearLayout>

@@ -7,12 +7,12 @@
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_home"
         tools:ignore="MenuTitle" />
-    <item
+<!--    <item
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_love"
-        tools:ignore="MenuTitle" />
+        tools:ignore="MenuTitle" />-->
     <item
         android:id="@+id/cart"
         android:layout_width="wrap_content"

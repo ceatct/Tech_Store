@@ -76,7 +76,7 @@ class CardsFragment : Fragment() {
     private fun back(){
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragments, MainFragment())
+        fragmentTransaction.replace(R.id.fragments, ProfileFragment())
         fragmentTransaction.commit()
     }
 

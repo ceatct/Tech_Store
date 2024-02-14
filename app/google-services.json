@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "895761516788",
+    "project_id": "techstore-d1357",
+    "storage_bucket": "techstore-d1357.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895761516788:android:66531ec423b61f2e6f76a1",
+        "android_client_info": {
+          "package_name": "com.inspire.techstore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqhK5rRyRL7aYI4MiZocUpL-flHALm1iE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
