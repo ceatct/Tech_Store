@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -17,14 +18,21 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.inspire.techstore.R
 import com.inspire.techstore.adapters.ImageAdapter
+import com.inspire.techstore.api.data.CartProduct
 import com.inspire.techstore.fragments.models.ViewFragmentViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import me.relex.circleindicator.CircleIndicator3
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class ViewFragment : Fragment() {
 
     private val viewModel by lazy {
         ViewModelProvider(this)[ViewFragmentViewModel::class.java]
     }
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     private lateinit var id: String
     private lateinit var viewpager: ViewPager2
@@ -34,13 +42,14 @@ class ViewFragment : Fragment() {
     private lateinit var price : TextView
     private lateinit var info : TextView
     private lateinit var backActionLayout : LinearLayout
+    private lateinit var addButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         id = arguments?.getString("id") ?: ""
     }
 
-    @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
+    @SuppressLint("SetTextI18n", "ClickableViewAccessibility", "SimpleDateFormat")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,6 +63,7 @@ class ViewFragment : Fragment() {
         price = view.findViewById(R.id.price)
         info = view.findViewById(R.id.info)
         backActionLayout = view.findViewById(R.id.back)
+        addButton = view.findViewById(R.id.add)
 
         val header = requireActivity().findViewById<ViewGroup>(R.id.include)
         val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
@@ -76,6 +86,15 @@ class ViewFragment : Fragment() {
 
             } else {
                 Toast.makeText(requireContext(), "data", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        addButton.setOnClickListener{
+            coroutineScope.launch{
+                val products = listOf(CartProduct(productId = id.toInt(), quantity = 1))
+                val date = SimpleDateFormat("yyyy-MM-dd")
+                val formattedDate = date.format(Date())
+                viewModel.addToCart(5, formattedDate, products, requireContext())
             }
         }
 

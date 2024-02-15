@@ -1,5 +1,7 @@
 package com.inspire.techstore.api
 
+import com.inspire.techstore.api.data.Cart
+import com.inspire.techstore.api.data.CartOutput
 import com.inspire.techstore.api.data.CategoriesModel
 import com.inspire.techstore.api.data.LoginModel
 import com.inspire.techstore.api.data.ProductModelItem
@@ -30,5 +32,8 @@ interface RetroServiceInterface {
 
     @POST("auth/login")
     suspend fun loginUser(@Body login: LoginModel): Response<UserTokenModel>
+
+    @POST("carts")
+    suspend fun addToCart(@Body cart: Cart): Response<CartOutput>
 
 }
