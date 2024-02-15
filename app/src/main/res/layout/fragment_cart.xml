@@ -27,14 +27,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_cart"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:layout_marginHorizontal="15dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:spanCount="2"
             tools:itemCount="5"
             android:layout_gravity="center_horizontal"
-            tools:listitem="@layout/item"/>
+            tools:listitem="@layout/item_cart"/>
 
     </LinearLayout>
 

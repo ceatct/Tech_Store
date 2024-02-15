@@ -57,7 +57,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:ignore="SpeakableTextPresentCheck"
             tools:itemCount="1"
-            tools:listitem="@layout/item_confirm" />
+            tools:listitem="@layout/item_cart" />
 
         <LinearLayout
             android:layout_width="match_parent"

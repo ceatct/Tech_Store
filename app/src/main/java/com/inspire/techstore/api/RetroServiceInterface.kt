@@ -6,6 +6,7 @@ import com.inspire.techstore.api.data.CategoriesModel
 import com.inspire.techstore.api.data.LoginModel
 import com.inspire.techstore.api.data.ProductModelItem
 import com.inspire.techstore.api.data.User
+import com.inspire.techstore.api.data.UserCart
 import com.inspire.techstore.api.data.UserTokenModel
 import retrofit2.Call
 import retrofit2.Response
@@ -26,6 +27,9 @@ interface RetroServiceInterface {
 
     @GET("products/{id}")
     fun getSingleProduct(@Path("id") id: String): Call<ProductModelItem>
+
+    @GET("carts/5")
+    fun getCart(): Call<UserCart>
 
     @POST("users")
     suspend fun registerUser(@Body user: User): Response<User>
