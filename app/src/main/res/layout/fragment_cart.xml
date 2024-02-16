@@ -37,6 +37,41 @@
             android:layout_gravity="center_horizontal"
             tools:listitem="@layout/item_cart"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/total"
+                android:textSize="16sp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/cart_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressTint="@color/black"
+            android:secondaryProgressTint="@color/black"
+            android:indeterminateTint="@color/black" />
+
     </LinearLayout>
 
     <TextView
@@ -57,8 +92,7 @@
         android:background="@drawable/action_button"
         android:layout_marginHorizontal="15dp"
         android:layout_marginVertical="15dp"
-        android:visibility="gone"
-        android:text="@string/add"
+        android:text="@string/order"
         android:layout_gravity="bottom"
         android:textColor="@color/white"/>
 

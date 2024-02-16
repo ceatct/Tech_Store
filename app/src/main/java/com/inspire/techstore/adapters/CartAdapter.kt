@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -45,17 +44,11 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
         var image: RoundedImageView
         var name: TextView
         var price: TextView
-        var counter: TextView
-        var add: ImageButton
-        var remove: ImageButton
 
         init {
             image = itemView.findViewById(R.id.image)
             name = itemView.findViewById(R.id.name)
             price = itemView.findViewById(R.id.price)
-            counter = itemView.findViewById(R.id.counter)
-            add = itemView.findViewById(R.id.add)
-            remove = itemView.findViewById(R.id.remove)
         }
     }
 }

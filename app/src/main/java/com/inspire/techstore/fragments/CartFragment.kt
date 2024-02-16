@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -29,8 +30,10 @@ class CartFragment : Fragment() {
     private lateinit var recyclerCart: RecyclerView
     private lateinit var emptyTextView: TextView
     private lateinit var orderButton: Button
+    private lateinit var progressBarCart: ProgressBar
+    private lateinit var totalPrice : TextView
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +43,8 @@ class CartFragment : Fragment() {
         emptyTextView = view.findViewById(R.id.empty)
         recyclerCart = view.findViewById(R.id.recycler_cart)
         orderButton = view.findViewById(R.id.order)
+        progressBarCart = view.findViewById(R.id.cart_progress)
+        totalPrice = view.findViewById(R.id.total)
 
         recyclerCart.adapter = productAdapter
 
@@ -47,9 +52,33 @@ class CartFragment : Fragment() {
             if (products != null) {
                 productAdapter.setProductList(products)
                 productAdapter.notifyDataSetChanged()
+
+                if (products.isEmpty()) {
+                    emptyTextView.visibility = View.VISIBLE
+                    progressBarCart.visibility = View.VISIBLE
+                    orderButton.visibility = View.GONE
+                    totalPrice.visibility = View.GONE
+                } else {
+                    emptyTextView.visibility = View.GONE
+                    progressBarCart.visibility = View.GONE
+                    orderButton.visibility = View.VISIBLE
+                    totalPrice.visibility = View.VISIBLE
+                }
+
             } else {
                 Toast.makeText(requireContext(), "Error with products loading", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        viewModel.liveDataTotalPrice.observe(viewLifecycleOwner) { total ->
+            totalPrice.text = "$ $total"
+        }
+
+        orderButton.setOnClickListener{
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragments, OrderFragment())
+            fragmentTransaction.commit()
         }
 
         viewModel.makeAPICall()
