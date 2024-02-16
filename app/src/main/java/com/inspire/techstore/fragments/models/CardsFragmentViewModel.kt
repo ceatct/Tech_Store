@@ -37,7 +37,7 @@ class CardsFragmentViewModel(private var viewModelProvider: ViewModelProvider): 
             val cardCvv = dialogView.findViewById<EditText>(R.id.card_cvv).text?.toString()
 
             if (cardNumber!!.length < 16 || cardDateYY!!.length < 2 || cardDateMM!!.length < 2 || cardHolderName.isNullOrEmpty() || cardCvv!!.length < 3) {
-                Toast.makeText(context, "FILL ALL!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.fill), Toast.LENGTH_SHORT).show()
             } else {
                 val card = Card(cardNumber.toLong(), "$cardDateMM/$cardDateYY", cardCvv, cardHolderName, detectCardCompany.getCardType(cardNumber))
                 cardViewModel.addCard(card)

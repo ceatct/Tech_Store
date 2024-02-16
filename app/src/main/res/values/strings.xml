@@ -19,6 +19,13 @@
     <string name="site">techstore.com</string>
     <string name="about">About app</string>
 
+    <string name="novaposhta">Нова пошта</string>
+    <string name="ukrposhta">Укрпошта</string>
+    <string name="justin">Justin</string>
+    <string name="bycard">By card</string>
+    <string name="googlepay">Google pay</string>
+    <string name="applepay">Apple pay</string>
+
     <string name="back">Back</string>
     <string name="add">Add to cart</string>
 
@@ -27,6 +34,8 @@
     <string name="contact">Contact info</string>
     <string name="delivery">Delivery</string>
     <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="department">Department number</string>
     <string name="payment_method">Payment method</string>
 
     <string name="confirm">Confirm</string>
@@ -41,15 +50,6 @@
     <string name="password">Password</string>
     <string name="phone_number">Phone number</string>
 
-    <string name="post">Post</string>
-    <string name="City">City</string>
-
-    <string name="card">Card</string>
-    <string name="google_pay">Google Pay</string>
-    <string name="apple_pay">Apple Pay</string>
-
-    <string name="count">1</string>
-
     <string name="register">Registration</string>
     <string name="login">Login</string>
     <string name="login_u"><u>Login</u></string>
@@ -58,6 +58,10 @@
     <string name="already">Already have an account?</string>
     <string name="havent">Want to create an account?</string>
     <string name="fill">Fill all!</string>
+    <string name="deleted">Deleted</string>
+    <string name="added">Added</string>
+    <string name="completed">Completed</string>
+    <string name="error_product">Error with products loading</string>
 
     <string name="empty">Add some items!</string>
 

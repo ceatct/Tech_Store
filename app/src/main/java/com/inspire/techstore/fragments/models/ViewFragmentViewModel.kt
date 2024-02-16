@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.inspire.techstore.R
 import com.inspire.techstore.api.RetroServiceInterface
 import com.inspire.techstore.api.RetrofitInstance
 import com.inspire.techstore.api.data.Cart
@@ -54,11 +55,11 @@ class ViewFragmentViewModel : ViewModel() {
 
         val response = service.addToCart(cart)
         return if (response.isSuccessful) {
-            Toast.makeText(context, "Product added to cart successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.completed), Toast.LENGTH_SHORT).show()
             true
         } else {
             val errorBody = response.errorBody()?.string() ?: "Unknown error"
-            Toast.makeText(context, "Error adding product: $errorBody", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, errorBody, Toast.LENGTH_SHORT).show()
             false
         }
     }

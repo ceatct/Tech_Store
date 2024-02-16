@@ -27,7 +27,7 @@ class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerV
 
     private lateinit var likeViewModel: LikeViewModel
     private var productList: List<Like>? = null
-    private var recyclerView: RecyclerView? = null // Store RecyclerView reference
+    private var recyclerView: RecyclerView? = null
 
     fun setProductList(productList: List<Like>?) {
         this.productList = productList
@@ -45,12 +45,10 @@ class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerV
 
         likeViewModel = viewModelProvider[LikeViewModel::class.java]
 
-        // Load image only if item is visible
         if (isVisible()) {
             loadImage(holder, product)
         }
 
-        // Set other item data
         holder.name.text = product?.title
         holder.oldPrice.text = "$1.20"
         holder.price.text = "$" + product?.price.toString()
@@ -72,7 +70,8 @@ class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerV
 
         holder.action.setOnClickListener{
             deleteItem(productList?.get(position)!!)
-            Toast.makeText(holder.itemView.context, "Deleted!", Toast.LENGTH_SHORT).show()
+            val context = holder.itemView.context
+            Toast.makeText(context, context.getString(R.string.deleted), Toast.LENGTH_SHORT).show()
         }
 
     }

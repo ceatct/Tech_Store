@@ -3,6 +3,7 @@ package com.inspire.techstore.fragments.models
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
+import com.inspire.techstore.R
 import com.inspire.techstore.api.RetroServiceInterface
 import com.inspire.techstore.api.RetrofitInstance
 import com.inspire.techstore.api.data.Address
@@ -38,7 +39,7 @@ class RegisterFragmentViewModel: ViewModel() {
 
         val response = service.registerUser(user)
         if (response.isSuccessful) {
-            Toast.makeText(context, "Complete", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.completed), Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(context, response.code(), Toast.LENGTH_SHORT).show()
         }
@@ -54,9 +55,9 @@ class RegisterFragmentViewModel: ViewModel() {
 
         val response = service.loginUser(user)
         if (response.isSuccessful) {
-            Toast.makeText(context, "Complete", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.completed), Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, response.code(), Toast.LENGTH_SHORT).show()
         }
     }
 

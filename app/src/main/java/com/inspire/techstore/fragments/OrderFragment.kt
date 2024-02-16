@@ -58,18 +58,18 @@ class OrderFragment : Fragment() {
         confirmButton = view.findViewById(R.id.confirm)
         progressBarOrder = view.findViewById(R.id.order_progress)
 
-        val contactList = listOf("Name", "Lastname", "Email")
-        val addressList = listOf("City", "Department number")
+        val contactList = listOf(getString(R.string.name), getString(R.string.lastname), getString(R.string.email))
+        val addressList = listOf(getString(R.string.city), getString(R.string.department))
 
         val deliveryList = listOf(
-            SelectInputModel("Нова пошта", R.drawable.novaposhta),
-            SelectInputModel("Укрпошта", R.drawable.ukrposhta),
-            SelectInputModel("Justin", R.drawable.justin))
+            SelectInputModel(getString(R.string.novaposhta), R.drawable.novaposhta),
+            SelectInputModel(getString(R.string.ukrposhta), R.drawable.ukrposhta),
+            SelectInputModel(getString(R.string.justin), R.drawable.justin))
 
         val payList = listOf(
-            SelectInputModel("Карткою", R.drawable.ic_visa),
-            SelectInputModel("Google pay", R.drawable.googlepay),
-            SelectInputModel("Apple pay", R.drawable.applepay))
+            SelectInputModel(getString(R.string.bycard), R.drawable.ic_visa),
+            SelectInputModel(getString(R.string.googlepay), R.drawable.googlepay),
+            SelectInputModel(getString(R.string.applepay), R.drawable.applepay))
 
         recyclerCart.adapter = productAdapter
 
@@ -86,7 +86,7 @@ class OrderFragment : Fragment() {
             if(!contactInputAdapter.isAllFieldsFilled() || !addressInputAdapter.isAllFieldsFilled()
                 && !deliverySelectAdapter.isItemSelected() || !paySelectAdapter.isItemSelected() )
             {
-                Toast.makeText(requireContext(), "Fill all!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.fill), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -106,7 +106,7 @@ class OrderFragment : Fragment() {
                 }
 
             } else {
-                Toast.makeText(requireContext(), "Error with products loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_product), Toast.LENGTH_SHORT).show()
             }
         }
 

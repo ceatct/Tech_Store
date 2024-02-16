@@ -74,7 +74,7 @@ class MainFragment : Fragment() {
                 }
 
             } else {
-                Toast.makeText(requireContext(), "Error with products loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_product), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -95,7 +95,7 @@ class MainFragment : Fragment() {
                 }
 
             } else {
-                Toast.makeText(requireContext(), "Error with categories loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_product), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -107,7 +107,7 @@ class MainFragment : Fragment() {
                 viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
                 pagerIndicator.setViewPager(viewpager)
             } else {
-                Toast.makeText(requireContext(), "Error with banners loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_product), Toast.LENGTH_SHORT).show()
             }
         }
 

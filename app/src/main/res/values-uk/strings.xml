@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tech Store</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="sales">Зі знижкою</string>
+    <string name="newest">Нові торави</string>
+    <string name="categories">Категорії</string>
+    <string name="favorites">Обране</string>
+    <string name="cart">Кошик</string>
+
+    <string name="order_history">Історія замовлень</string>
+    <string name="wallet">Мої способи оплати</string>
+    <string name="support">Підтримка</string>
+    <string name="stores">Наші магазини</string>
+    <string name="phone">0985899858</string>
+    <string name="mail">support@tech.store</string>
+    <string name="inst">tech.store</string>
+    <string name="site">techstore.com</string>
+    <string name="about">Про додаток</string>
+
+    <string name="novaposhta">Нова пошта</string>
+    <string name="ukrposhta">Укрпошта</string>
+    <string name="justin">Justin</string>
+    <string name="bycard">Карткою</string>
+    <string name="googlepay">Google pay</string>
+    <string name="applepay">Apple pay</string>
+
+    <string name="back">Назад</string>
+    <string name="add">Додати до кошика</string>
+
+    <string name="order">Замовлення</string>
+    <string name="total">Всього</string>
+    <string name="contact">Контакти</string>
+    <string name="delivery">Доставка</string>
+    <string name="address">Адреси</string>
+    <string name="city">Місто</string>
+    <string name="department">Номер відділення</string>
+    <string name="payment_method">Спросіб оплати</string>
+
+    <string name="confirm">Підтвердити</string>
+
+    <string name="price">$ 0</string>
+    <string name="color">Колір: Deep Purple</string>
+
+    <string name="name">Ім\'я</string>
+    <string name="lastname">Прізвище</string>
+    <string name="email">Email</string>
+    <string name="username">Логін</string>
+    <string name="password">Пароль</string>
+    <string name="phone_number">Номер телефону</string>
+
+    <string name="register">Реєстрація</string>
+    <string name="login">Авторизуватись</string>
+    <string name="login_u"><u>Авторизуватись</u></string>
+    <string name="register_u"><u>Реєстрація</u></string>
+
+    <string name="already">Вже маєте аккаунт?</string>
+    <string name="havent">Хочете створити аккаунт?</string>
+    <string name="fill">Заповніть всі поля!</string>
+    <string name="deleted">Видалено</string>
+    <string name="added">Додано</string>
+    <string name="completed">Виконано</string>
+    <string name="error_product">Помилка з завантаженням товарів</string>
+
+    <string name="empty">Додайте якісь товари!</string>
+
+    <string name="card_number">Номер картки</string>
+    <string name="card_holder">Ім\'я власника</string>
+    <string name="card_cvv">CVV код</string>
+    <string name="add_bt">Додати</string>
+    <string name="yy">РР</string>
+    <string name="mm">MM</string>
+
+    <string name="empty_result">За вашим запитом нічого не знайдено</string>
+    <string name="want_find">Хочу знайти</string>
+    <string name="result_for">Результат для</string>
+
+</resources>

@@ -50,7 +50,8 @@ class CardsAdapter(private var viewModelProvider: ViewModelProvider) : RecyclerV
 
         holder.action.setOnClickListener{
             deleteItem(cardsList?.get(position)!!)
-            Toast.makeText(holder.itemView.context, "Deleted!", Toast.LENGTH_SHORT).show()
+            val context = holder.itemView.context
+            Toast.makeText(context, context.getString(R.string.deleted), Toast.LENGTH_SHORT).show()
         }
 
     }

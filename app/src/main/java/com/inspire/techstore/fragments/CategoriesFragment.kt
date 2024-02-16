@@ -48,7 +48,7 @@ class CategoriesFragment : Fragment() {
                 }
 
             } else {
-                Toast.makeText(requireContext(), "Error with categories loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_product), Toast.LENGTH_SHORT).show()
             }
         }
 

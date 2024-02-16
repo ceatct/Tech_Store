@@ -56,7 +56,7 @@ class ResultFragment : Fragment() {
         recyclerCategory.adapter = productAdapter
 
         if(category.isEmpty()){
-            view.findViewById<TextView>(R.id.textView).text = "Result for $name"
+            view.findViewById<TextView>(R.id.textView).text = "${getString(R.string.result_for)} $name"
 
             viewModel.getLiveDataObserver().observe(viewLifecycleOwner) { product ->
                 if (product != null) {
@@ -76,7 +76,7 @@ class ResultFragment : Fragment() {
                     }
 
                 } else {
-                    Toast.makeText(requireContext(), "Error with products loading", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.error_product), Toast.LENGTH_SHORT).show()
                 }
             }
             viewModel.makeAPICallSearch()
@@ -96,7 +96,7 @@ class ResultFragment : Fragment() {
                     }
 
                 } else {
-                    Toast.makeText(requireContext(), "Error with products loading", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.error_product), Toast.LENGTH_SHORT).show()
                 }
             }
             viewModel.makeAPICall(category)
