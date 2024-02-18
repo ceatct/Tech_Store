@@ -18,13 +18,18 @@ import com.inspire.techstore.R
 import com.inspire.techstore.adapters.CartAdapter
 import com.inspire.techstore.adapters.SelectInputAdapter
 import com.inspire.techstore.adapters.TextInputAdapter
+import com.inspire.techstore.api.data.ProductModelItem
 import com.inspire.techstore.api.data.SelectInputModel
+import com.inspire.techstore.db.history.History
 import com.inspire.techstore.fragments.models.OrderFragmentViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class OrderFragment : Fragment() {
 
     private val viewModel by lazy {
-        ViewModelProvider(this)[OrderFragmentViewModel::class.java]
+        val viewModelProvider = ViewModelProvider(this)
+        OrderFragmentViewModel(viewModelProvider)
     }
 
     private val productAdapter by lazy {
@@ -41,7 +46,7 @@ class OrderFragment : Fragment() {
     private lateinit var confirmButton : Button
     private lateinit var progressBarOrder: ProgressBar
 
-    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
+    @SuppressLint("NotifyDataSetChanged", "SetTextI18n", "SimpleDateFormat")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -82,22 +87,18 @@ class OrderFragment : Fragment() {
         recyclerDelivery.adapter = deliverySelectAdapter
         recyclerPay.adapter = paySelectAdapter
 
-        confirmButton.setOnClickListener{
-            if(!contactInputAdapter.isAllFieldsFilled() || !addressInputAdapter.isAllFieldsFilled()
-                && !deliverySelectAdapter.isItemSelected() || !paySelectAdapter.isItemSelected() )
-            {
-                Toast.makeText(context, getString(R.string.fill), Toast.LENGTH_SHORT).show()
-            }
-        }
-
         backActionLayout.setOnClickListener {
             back()
         }
+
+        val historyProductList = ArrayList<ProductModelItem>()
 
         viewModel.getLiveDataObserver().observe(viewLifecycleOwner) { products ->
             if (products != null) {
                 productAdapter.setProductList(products)
                 productAdapter.notifyDataSetChanged()
+
+                historyProductList.addAll(products)
 
                 if (products.isEmpty()) {
                     progressBarOrder.visibility = View.VISIBLE
@@ -107,6 +108,21 @@ class OrderFragment : Fragment() {
 
             } else {
                 Toast.makeText(context, getString(R.string.error_product), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        confirmButton.setOnClickListener{
+            /*if(!contactInputAdapter.isAllFieldsFilled() || !addressInputAdapter.isAllFieldsFilled()
+                && !deliverySelectAdapter.isItemSelected() || !paySelectAdapter.isItemSelected() )
+            {
+                Toast.makeText(context, getString(R.string.fill), Toast.LENGTH_SHORT).show()
+            }*/
+            val orderNumber = java.util.Random().nextInt(99999 - 1 + 1) + 99999
+            val date = SimpleDateFormat("dd-MM-yyyy").format(Date()).toString()
+
+            viewModel.liveDataTotalPrice.observe(viewLifecycleOwner) { total ->
+                val history = History(orderNumber, date, "Completed", total, historyProductList)
+                viewModel.addToHistory(history)
             }
         }
 

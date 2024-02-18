@@ -2,18 +2,27 @@ package com.inspire.techstore.fragments.models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.inspire.techstore.api.RetroServiceInterface
 import com.inspire.techstore.api.RetrofitInstance
 import com.inspire.techstore.api.data.ProductModelItem
 import com.inspire.techstore.api.data.UserCart
+import com.inspire.techstore.db.history.History
+import com.inspire.techstore.db.history.HistoryViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class OrderFragmentViewModel: ViewModel() {
+class OrderFragmentViewModel(private var viewModelProvider: ViewModelProvider): ViewModel() {
 
     var liveDataList: MutableLiveData<List<ProductModelItem>?> = MutableLiveData()
     var liveDataTotalPrice: MutableLiveData<Double> = MutableLiveData()
+    private lateinit var historyViewModel: HistoryViewModel
+
+    fun addToHistory(history: History){
+        historyViewModel = viewModelProvider[HistoryViewModel::class.java]
+        historyViewModel.addToHistory(history)
+    }
 
     fun getLiveDataObserver(): MutableLiveData<List<ProductModelItem>?> {
         return liveDataList

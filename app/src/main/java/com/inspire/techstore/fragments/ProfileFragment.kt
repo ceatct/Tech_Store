@@ -75,8 +75,8 @@ class ProfileFragment : Fragment() {
 
         listOf(walletImageView, walletTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, CardsFragment(), R.id.fragments) }}
 
-        //add orders history fragment
-        listOf(ordersHistoryImageView, ordersHistoryTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, ResultFragment(), R.id.fragments) }}
+
+        listOf(ordersHistoryImageView, ordersHistoryTextView).forEach { it.setOnClickListener { viewModel.switchFragment((activity as AppCompatActivity?)!!, OrdersHistoryFragment(), R.id.fragments) }}
 
 
         listOf(supportImageView, supportTextView).forEach { it.setOnClickListener { Toast.makeText(requireContext(), "Open site with support chat", Toast.LENGTH_SHORT).show() }}
