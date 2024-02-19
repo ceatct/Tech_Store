@@ -3,12 +3,14 @@ package com.inspire.techstore.fragments.models
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.inspire.techstore.api.RetroServiceInterface
 import com.inspire.techstore.api.RetrofitInstance
 import com.inspire.techstore.api.data.ProductModelItem
 import com.inspire.techstore.api.data.UserCart
 import com.inspire.techstore.db.history.History
 import com.inspire.techstore.db.history.HistoryViewModel
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +38,13 @@ class OrderFragmentViewModel(private var viewModelProvider: ViewModelProvider): 
         liveDataTotalPrice.postValue(total)
     }
 
-    fun makeAPICall() {
+    fun loadData() {
+        viewModelScope.launch {
+            makeAPICall()
+        }
+    }
+
+    private fun makeAPICall() {
         val retroInstance =  RetrofitInstance.getRetrofitInstance()
         val retroService = retroInstance.create(RetroServiceInterface::class.java)
         val call = retroService.getCart()

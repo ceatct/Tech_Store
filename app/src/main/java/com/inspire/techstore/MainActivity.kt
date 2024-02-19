@@ -28,12 +28,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        replaceFragment(MainFragment())
+        if (savedInstanceState != null) {
+            val currentFragment = supportFragmentManager.getFragment(savedInstanceState, "currentFragment")
+            if (currentFragment != null) {
+                replaceFragment(currentFragment)
+            } else {
+                replaceFragment(MainFragment())
+            }
+        } else {
+            replaceFragment(MainFragment())
+        }
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(MainFragment())
-                //R.id.like -> replaceFragment(LikeFragment())
                 R.id.cart -> replaceFragment(CartFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 else -> {}
@@ -78,13 +86,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun replaceFragment(fragment : Fragment){
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragments)
+        if (currentFragment != null) {
+            supportFragmentManager.putFragment(outState, "currentFragment", currentFragment)
+        }
+    }
 
+    private fun replaceFragment(fragment : Fragment){
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragments, fragment)
         fragmentTransaction.commit()
-
     }
 
 }

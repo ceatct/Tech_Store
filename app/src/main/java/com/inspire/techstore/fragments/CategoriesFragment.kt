@@ -10,6 +10,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inspire.techstore.R
 import com.inspire.techstore.adapters.CategoriesAdapter
@@ -33,8 +34,12 @@ class CategoriesFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_categories, container, false)
 
         recyclerCategory = view.findViewById(R.id.recycler_category)
-        recyclerCategory.adapter = categoriesAdapter
         progressBarCategory = view.findViewById(R.id.category_progress)
+
+        val numberOfColumns = resources.getInteger(R.integer.number_of_columns)
+        recyclerCategory.layoutManager = GridLayoutManager(requireContext(), numberOfColumns)
+
+        recyclerCategory.adapter = categoriesAdapter
 
         viewModel.getLiveDataObserverCategories().observe(viewLifecycleOwner) { category ->
             if (category != null) {
@@ -52,7 +57,7 @@ class CategoriesFragment : Fragment() {
             }
         }
 
-        viewModel.makeAPICallCategories()
+        viewModel.loadData()
 
         return view
     }

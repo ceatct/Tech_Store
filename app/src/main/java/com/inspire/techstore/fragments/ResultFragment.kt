@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inspire.techstore.R
 import com.inspire.techstore.adapters.ProductAdapter
@@ -52,6 +53,9 @@ class ResultFragment : Fragment() {
         recyclerCategory = view.findViewById(R.id.recycler_category)
         progressBarResult = view.findViewById(R.id.result_progress)
         emptyTextView = view.findViewById(R.id.empty)
+
+        val numberOfColumns = resources.getInteger(R.integer.number_of_columns)
+        recyclerCategory.layoutManager = GridLayoutManager(requireContext(), numberOfColumns)
 
         recyclerCategory.adapter = productAdapter
 

@@ -112,17 +112,19 @@ class OrderFragment : Fragment() {
         }
 
         confirmButton.setOnClickListener{
-            /*if(!contactInputAdapter.isAllFieldsFilled() || !addressInputAdapter.isAllFieldsFilled()
+            if(!contactInputAdapter.isAllFieldsFilled() || !addressInputAdapter.isAllFieldsFilled()
                 && !deliverySelectAdapter.isItemSelected() || !paySelectAdapter.isItemSelected() )
             {
                 Toast.makeText(context, getString(R.string.fill), Toast.LENGTH_SHORT).show()
-            }*/
-            val orderNumber = java.util.Random().nextInt(99999 - 1 + 1) + 99999
-            val date = SimpleDateFormat("dd-MM-yyyy").format(Date()).toString()
+            }
+            else{
+                val orderNumber = java.util.Random().nextInt(99999 - 1 + 1) + 99999
+                val date = SimpleDateFormat("dd-MM-yyyy").format(Date()).toString()
 
-            viewModel.liveDataTotalPrice.observe(viewLifecycleOwner) { total ->
-                val history = History(orderNumber, date, "Completed", total, historyProductList)
-                viewModel.addToHistory(history)
+                viewModel.liveDataTotalPrice.observe(viewLifecycleOwner) { total ->
+                    val history = History(orderNumber, date, "Completed", total, historyProductList)
+                    viewModel.addToHistory(history)
+                }
             }
         }
 
@@ -130,7 +132,7 @@ class OrderFragment : Fragment() {
             totalPrice.text = "$ $total"
         }
 
-        viewModel.makeAPICall()
+        viewModel.loadData()
 
         return view
     }

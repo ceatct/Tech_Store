@@ -2,7 +2,6 @@ package com.inspire.techstore.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -10,7 +9,9 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inspire.techstore.R
 import com.inspire.techstore.adapters.LikeAdapter
@@ -39,6 +40,9 @@ class LikeFragment : Fragment() {
         emptyTextView = view.findViewById(R.id.empty)
 
         recyclerLike = view.findViewById(R.id.recycler_like)
+        val numberOfColumns = resources.getInteger(R.integer.number_of_columns)
+        recyclerLike.layoutManager = GridLayoutManager(requireContext(), numberOfColumns)
+
         recyclerLike.adapter = productAdapter
 
         likeViewModel.readAllData.observe(viewLifecycleOwner) { like ->

@@ -102,7 +102,6 @@ class MainFragment : Fragment() {
         viewModel.getLiveDataObserverBanners().observe(viewLifecycleOwner) { banner ->
             if (banner != null) {
                 val imgList = ArrayList<String>(banner)
-
                 viewpager.adapter = ImageAdapter(imgList)
                 viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
                 pagerIndicator.setViewPager(viewpager)
@@ -111,9 +110,7 @@ class MainFragment : Fragment() {
             }
         }
 
-        viewModel.makeAPICall()
-        viewModel.makeAPICallCategories()
-        viewModel.makeAPICallBanners()
+        viewModel.loadData()
 
         return view
     }
