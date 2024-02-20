@@ -67,8 +67,7 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
 
         holder.action.setOnClickListener{
             insertDataToDatabase(position)
-            val context = holder.itemView.context
-            Toast.makeText(context, context.getString(R.string.added), Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context, holder.itemView.context.getString(R.string.added), Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -111,7 +110,6 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
         return layoutManager?.findFirstVisibleItemPosition() ?: RecyclerView.NO_POSITION
     }
 
-    @SuppressLint("SetTextI18n")
     private fun loadImage(holder: MyViewHolder, product: ProductModelItem?) {
         CoroutineScope(Dispatchers.IO).launch {
             val bitmap = Glide.with(holder.itemView.context)
@@ -129,14 +127,12 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: RoundedImageView
         var name: TextView
-        var oldPrice: TextView
         var price: TextView
         var action: ImageView
 
         init {
             imageView = itemView.findViewById(R.id.imageView)
             name = itemView.findViewById(R.id.name)
-            oldPrice = itemView.findViewById(R.id.old_price)
             price = itemView.findViewById(R.id.price)
             action = itemView.findViewById(R.id.action)
         }

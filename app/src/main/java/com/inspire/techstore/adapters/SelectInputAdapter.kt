@@ -15,7 +15,6 @@ class SelectInputAdapter(private var inputs: List<SelectInputModel>) : RecyclerV
 
     private var selectedPosition = RecyclerView.NO_POSITION
 
-    @SuppressLint("SetTextI18n")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_select_input, parent, false)
         return MyViewHolder(view)

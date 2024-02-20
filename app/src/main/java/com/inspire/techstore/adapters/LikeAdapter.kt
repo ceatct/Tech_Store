@@ -50,7 +50,6 @@ class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerV
         }
 
         holder.name.text = product?.title
-        holder.oldPrice.text = "$1.20"
         holder.price.text = "$" + product?.price.toString()
 
         holder.itemView.setOnClickListener {
@@ -70,8 +69,7 @@ class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerV
 
         holder.action.setOnClickListener{
             deleteItem(productList?.get(position)!!)
-            val context = holder.itemView.context
-            Toast.makeText(context, context.getString(R.string.deleted), Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context, holder.itemView.context.getString(R.string.deleted), Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -105,7 +103,6 @@ class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerV
         return layoutManager?.findFirstVisibleItemPosition() ?: RecyclerView.NO_POSITION
     }
 
-    @SuppressLint("SetTextI18n")
     private fun loadImage(holder: MyViewHolder, product: Like?) {
         CoroutineScope(Dispatchers.IO).launch {
             val bitmap = Glide.with(holder.itemView.context)
@@ -123,14 +120,12 @@ class LikeAdapter (private var viewModelProvider: ViewModelProvider) : RecyclerV
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: RoundedImageView
         var name: TextView
-        var oldPrice: TextView
         var price: TextView
         var action: ImageView
 
         init {
             imageView = itemView.findViewById(R.id.imageView)
             name = itemView.findViewById(R.id.name)
-            oldPrice = itemView.findViewById(R.id.old_price)
             price = itemView.findViewById(R.id.price)
             action = itemView.findViewById(R.id.action)
         }

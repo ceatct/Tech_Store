@@ -10,7 +10,6 @@ import com.inspire.techstore.R
 
 class TextInputAdapter(private var inputs: List<String>) : RecyclerView.Adapter<TextInputAdapter.MyViewHolder>() {
 
-    @SuppressLint("SetTextI18n")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_input_text, parent, false)
         return MyViewHolder(view)
