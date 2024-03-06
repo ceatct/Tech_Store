@@ -23,41 +23,39 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.MyViewHolder>() {
         return MyViewHolder(view)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val product = productList?.get(position)
-
-        holder.orderNumber.text = product?.number.toString()
-        holder.orderDate.text = product?.date.toString()
-        holder.orderStatus.text = product?.status.toString()
-        holder.orderPrice.text = "$ " + product?.total.toString()
-
-        val itemsRecyclerView = ItemHistoryAdapter(product!!.products)
-        holder.recyclerItems.adapter = itemsRecyclerView
-
+        holder.bind(productList?.get(position))
     }
 
     override fun getItemCount(): Int {
-        return if (productList == null) 0 else productList!!.size
+        return productList?.size ?: 0
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val orderNumber: TextView = itemView.findViewById(R.id.order_number)
+        private val orderDate: TextView = itemView.findViewById(R.id.order_date)
+        private val orderStatus: TextView = itemView.findViewById(R.id.order_status)
+        private val orderPrice: TextView = itemView.findViewById(R.id.order_price)
+        private val recyclerItems: RecyclerView = itemView.findViewById(R.id.recycler_items)
 
-        var orderNumber: TextView
-        var orderDate: TextView
-        var orderStatus: TextView
-        var orderPrice: TextView
-        var recyclerItems: RecyclerView
+        private val itemHistoryAdapter = ItemHistoryAdapter()
 
         init {
-            orderNumber = itemView.findViewById(R.id.order_number)
-            orderDate = itemView.findViewById(R.id.order_date)
-            orderStatus = itemView.findViewById(R.id.order_status)
-            orderPrice = itemView.findViewById(R.id.order_price)
-            recyclerItems = itemView.findViewById(R.id.recycler_items)
-
             recyclerItems.layoutManager = LinearLayoutManager(itemView.context, RecyclerView.VERTICAL, false)
+            recyclerItems.adapter = itemHistoryAdapter
+        }
+
+        @SuppressLint("SetTextI18n")
+        fun bind(history: History?) {
+            orderNumber.text = history?.number.toString()
+            orderDate.text = history?.date.toString()
+            orderStatus.text = history?.status.toString()
+            orderPrice.text = "$ " + history?.total.toString()
+
+            val itemHistoryAdapter = ItemHistoryAdapter()
+            recyclerItems.layoutManager = LinearLayoutManager(itemView.context, RecyclerView.VERTICAL, false)
+            recyclerItems.adapter = itemHistoryAdapter
+            itemHistoryAdapter.setProductList(history?.products)
         }
     }
-
 }

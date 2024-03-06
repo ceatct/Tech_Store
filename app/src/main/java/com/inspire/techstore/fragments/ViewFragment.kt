@@ -81,7 +81,7 @@ class ViewFragment : Fragment() {
                 info.text = data.description
                 val imgList = arrayListOf(data.image)
 
-                viewpager.adapter = ImageAdapter(imgList)
+                viewpager.adapter = ImageAdapter(imgList, R.layout.item_image_view_layout)
                 viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
             } else {

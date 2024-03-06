@@ -87,16 +87,16 @@ class RegisterFragment : Fragment() {
             alreadyInfoLayout.visibility = View.VISIBLE
         }
 
-        val allFieldsFilled = listOf(
-            emailEditTextRegistration.text.toString(),
-            usernameEditTextRegistration.text.toString(),
-            passwordEditTextRegistration.text.toString(),
-            nameEditTextRegistration.text.toString(),
-            lastnameEditTextRegistration.text.toString(),
-            phoneEditTextRegistration.text.toString()
-        ).all { it.isNotEmpty() }
-
         registrationButton.setOnClickListener {
+            val allFieldsFilled = listOf(
+                emailEditTextRegistration.text.toString(),
+                usernameEditTextRegistration.text.toString(),
+                passwordEditTextRegistration.text.toString(),
+                nameEditTextRegistration.text.toString(),
+                lastnameEditTextRegistration.text.toString(),
+                phoneEditTextRegistration.text.toString()
+            ).all { it.isNotEmpty() }
+
             if (allFieldsFilled) {
                 coroutineScope.launch {
                     viewModel.register(

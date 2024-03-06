@@ -27,7 +27,7 @@ class MainFragment : Fragment() {
 
     private val productAdapter by lazy {
         val viewModelProvider = ViewModelProvider(this)
-        ProductAdapter(viewModelProvider)
+        ProductAdapter(viewModelProvider, R.layout.item)
     }
 
     private val categoriesAdapter = CategoriesAdapter()
@@ -102,7 +102,7 @@ class MainFragment : Fragment() {
         viewModel.getLiveDataObserverBanners().observe(viewLifecycleOwner) { banner ->
             if (banner != null) {
                 val imgList = ArrayList<String>(banner)
-                viewpager.adapter = ImageAdapter(imgList)
+                viewpager.adapter = ImageAdapter(imgList, R.layout.item_image_layout)
                 viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
                 pagerIndicator.setViewPager(viewpager)
             } else {

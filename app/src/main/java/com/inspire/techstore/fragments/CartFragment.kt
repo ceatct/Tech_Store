@@ -12,7 +12,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inspire.techstore.R
 import com.inspire.techstore.adapters.CartAdapter
@@ -46,9 +45,6 @@ class CartFragment : Fragment() {
         orderButton = view.findViewById(R.id.order)
         progressBarCart = view.findViewById(R.id.cart_progress)
         totalPrice = view.findViewById(R.id.total)
-
-        val numberOfColumns = resources.getInteger(R.integer.number_of_columns)
-        recyclerCart.layoutManager = GridLayoutManager(requireContext(), numberOfColumns)
 
         recyclerCart.adapter = productAdapter
 

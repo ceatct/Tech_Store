@@ -57,9 +57,8 @@ class RegisterFragmentViewModel: ViewModel() {
         if (response.isSuccessful) {
             Toast.makeText(context, context.getString(R.string.completed), Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, response.code(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.error), Toast.LENGTH_SHORT).show()
         }
     }
-
 
 }

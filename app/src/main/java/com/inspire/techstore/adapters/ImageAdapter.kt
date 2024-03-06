@@ -10,14 +10,14 @@ import com.bumptech.glide.Glide
 import com.inspire.techstore.R
 import com.makeramen.roundedimageview.RoundedImageView
 
-class ImageAdapter(private var images: ArrayList<String>) : RecyclerView.Adapter<ImageAdapter.Pager2ViewHolder>(){
+class ImageAdapter(private var images: ArrayList<String>, private var layout: Int) : RecyclerView.Adapter<ImageAdapter.Pager2ViewHolder>(){
 
     inner class Pager2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val itemImage: RoundedImageView = itemView.findViewById(R.id.imageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageAdapter.Pager2ViewHolder {
-        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_image_layout, parent, false))
+        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(layout, parent, false))
     }
 
     override fun getItemCount(): Int {

@@ -21,7 +21,7 @@ class ResultFragment : Fragment() {
 
     private val productAdapter by lazy {
         val viewModelProvider = ViewModelProvider(this)
-        ProductAdapter(viewModelProvider)
+        ProductAdapter(viewModelProvider, R.layout.item_result)
     }
 
     private val viewModel by lazy {

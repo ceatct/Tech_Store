@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="ContentDescription"
-        android:scaleType="centerCrop"
         android:src="@drawable/placeholder"
         app:riv_corner_radius="12dp"/>
 

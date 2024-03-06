@@ -62,6 +62,7 @@
     <string name="deleted">Видалено</string>
     <string name="added">Додано</string>
     <string name="completed">Виконано</string>
+    <string name="error">Помилка</string>
     <string name="error_product">Помилка з завантаженням товарів</string>
 
     <string name="empty">Додайте якісь товари!</string>

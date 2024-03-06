@@ -21,7 +21,7 @@ import com.inspire.techstore.fragments.ViewFragment
 import com.makeramen.roundedimageview.RoundedImageView
 import kotlinx.coroutines.*
 
-class ProductAdapter(private var viewModelProvider: ViewModelProvider) : RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
+class ProductAdapter(private var viewModelProvider: ViewModelProvider, private var  layout: Int) : RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
 
     private lateinit var likeViewModel: LikeViewModel
     private var productList: List<ProductModelItem>? = null
@@ -32,7 +32,7 @@ class ProductAdapter(private var viewModelProvider: ViewModelProvider) : Recycle
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         likeViewModel = viewModelProvider[LikeViewModel::class.java]
         return MyViewHolder(view)
     }

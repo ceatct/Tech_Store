@@ -98,6 +98,7 @@ class OrderFragment : Fragment() {
                 productAdapter.setProductList(products)
                 productAdapter.notifyDataSetChanged()
 
+                historyProductList.clear()
                 historyProductList.addAll(products)
 
                 if (products.isEmpty()) {
@@ -125,6 +126,7 @@ class OrderFragment : Fragment() {
                     val history = History(orderNumber, date, "Completed", total, historyProductList)
                     viewModel.addToHistory(history)
                 }
+                Toast.makeText(context, getString(R.string.completed), Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -38,11 +38,11 @@ class OrdersHistoryFragment : Fragment() {
         val ordersAdapter = HistoryAdapter()
         recyclerOrders.adapter = ordersAdapter
 
-        historyViewModel.readAllData.observe(viewLifecycleOwner) { card ->
-            ordersAdapter.setProductList(card)
+        historyViewModel.readAllData.observe(viewLifecycleOwner) { item ->
+            ordersAdapter.setProductList(item)
             ordersAdapter.notifyDataSetChanged()
 
-            if (card.isEmpty()) {
+            if (item.isEmpty()) {
                 emptyTextView.visibility = View.VISIBLE
             } else {
                 emptyTextView.visibility = View.GONE
